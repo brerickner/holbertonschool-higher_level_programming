@@ -7,12 +7,18 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *paceNode, *raceNode;
+/* both start @ head node in *list */
+
+	listint_t *paceNode = list;
+	listint_t *raceNode = list;
+
+/* check if raceNode is tail node or raceNode->next is tail node/NULL*/
 
 	while (raceNode && raceNode->next)
 	{
-		paceNode = list->next;
-		raceNode = list->next->next;
+/* paceNode increase slowly, by 1, while raceNode by 2 in attempt to catch up */
+		paceNode = paceNode->next;
+		raceNode = raceNode->next->next;
 		if(raceNode == paceNode)
 			return(1);
 	}
