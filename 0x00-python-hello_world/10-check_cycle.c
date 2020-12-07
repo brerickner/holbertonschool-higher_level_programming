@@ -7,5 +7,14 @@
  */
 int check_cycle(listint_t *list)
 {
+	listint_t *paceNode, *raceNode;
+
+	while (raceNode && raceNode->next)
+	{
+		paceNode = list->next;
+		raceNode = list->next->next;
+		if(raceNode == paceNode)
+			return(1);
+	}
 	return (0);
 }
