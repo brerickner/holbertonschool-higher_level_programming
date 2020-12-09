@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-for numbers in range (0, 100):
-    if(numbers < 10):
-        print("0 + number{}".format(numbers), end=", ")
+def islower(c):
+    if ord(c) > 96 and ord(c) < 123:
+        return True
     else:
-        print("{:}".format(numbers), end=", ")
+        return False
