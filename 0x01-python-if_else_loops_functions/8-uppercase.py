@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-def uppercase (str):
+
+def uppercase(str):
 
     for letters in str:
         letter = ord(letters)
