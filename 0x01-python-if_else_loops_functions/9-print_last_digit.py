@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-for numbers in range (0, 100):
-    if(numbers < 10):
-        print("0 + number{}".format(numbers), end=", ")
-    else:
-        print("{:}".format(numbers), end=", ")
+def print_last_digit(number):
+    last_dig = (abs(number) % 10)
+    print(last_dig, end="")
+    return (last_dig)
