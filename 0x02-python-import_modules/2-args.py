@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-if __name__ = "__main__":
+if __name__ == "__main__":
     from sys import argv
 
     arguments = len(argv)
@@ -20,5 +20,5 @@ if __name__ = "__main__":
 
         # for each arg passed in, increment the position and argument in list
 
-        for pos, arg in enumerate(argv[1:]):
-            print("{:d}: {}".format(pos + 1, arg))
+    for pos, arg in enumerate(argv[1:]):
+        print("{:d}: {}".format(pos + 1, arg))
