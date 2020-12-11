@@ -4,4 +4,4 @@ if __name__ == "__main__":
 goodies = dir(hidden_4)
 for goods in goodies:
     if goods[:2] != "__":
-        print (goods)
+        print(goods)
