@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-def print_matrix_integer(matrix=[[]]):
-    for i in range(len(matrix)):
-        for j in range(len(matrix[i])):
-            print("{:d}".format(matrix[i][j]), end="")
-            if j != len(matrix[i]) - 1:
-                print(" ", end="")
-        print("")
+def delete_at(my_list=[], idx=0):
+    if idx < 0:
+        return my_list
+    elif idx > len(my_list):
+        return my_list
+    else:
+        del my_list[idx]
+        return my_list
