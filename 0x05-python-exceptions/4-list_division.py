@@ -5,7 +5,7 @@ def list_division(my_list_1, my_list_2, list_length):
         for i in range(list_length):
                 try:
                         result = my_list_1[i] / my_list_2[i]
-
+                
                 # If an element is not an integer or float
                 except TypeError:
                         print("wrong type")
@@ -13,11 +13,14 @@ def list_division(my_list_1, my_list_2, list_length):
                 # If my_list_1 or my_list_2 is too short
                 except IndexError:
                         print("out of range")
+                
                 # If the division can’t be done (/0)
                 except ZeroDivisionError:
                         print("division by 0")
-
+                
                 finally:
                         new_list.append(result)
+        
                 result = 0
+                
         return new_list
