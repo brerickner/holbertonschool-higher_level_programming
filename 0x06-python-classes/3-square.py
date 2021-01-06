@@ -10,7 +10,7 @@ class Square:
         """Initialize the square.
         Args:
             size(int): Private attribute for size of square.
-        Return: 
+        Return:
             None
         """
 
@@ -20,12 +20,12 @@ class Square:
             raise TypeError("size must be an integer")
         if size < 0:
             raise ValueError("size must be >= 0")
-    
+
     def area(self):
         """Public instance area method
         Args:
             self: object
-        Return: 
+        Return:
             square area
         """
         return self.__size ** 2
