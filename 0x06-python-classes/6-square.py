@@ -16,7 +16,7 @@ class Square:
         """
 
         self.size = size
-        self.clearposition = position
+        self.position = position
 
     @property
     def size(self):
