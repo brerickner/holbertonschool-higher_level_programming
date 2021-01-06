@@ -76,7 +76,6 @@ class Square:
         """Function that prints in stdout square with char #"""
         if self.__size == 0:
             print()
-            return
 
         copy = self.__position[:]
         print("{}".format('\n' * copy[1]), end="")
