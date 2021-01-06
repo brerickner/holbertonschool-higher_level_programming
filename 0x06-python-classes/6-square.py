@@ -78,7 +78,6 @@ class Square:
             print()
             return
 
-
         copy = self.__position[:]
         print("{}".format('\n' * copy[1]), end="")
 
