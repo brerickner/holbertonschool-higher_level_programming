@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A simple module that defines a class square"""
+"""A simple module that defines a class magicclass"""
 
 
 class MagicClass:
