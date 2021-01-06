@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 """A simple module that defines a class square"""
 
 
@@ -81,5 +80,5 @@ class Square:
         copy = self.__position[:]
         print("{}".format('\n' * copy[1]), end="")
 
-        for col in range(self.__size):
-            print("{}{}".format('' * copy[0], '#' * self.__size))
+        for x in range(self.__size):
+            print("{}{}".format(' ' * copy[0], '#' * self.__size))
