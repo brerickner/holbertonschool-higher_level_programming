@@ -11,6 +11,7 @@ class Square:
         """Initialize the square.
         Args:
             size(int): Private attribute for size of square.
+            position: Private attribute for position
         Return:
             None
         """
@@ -45,8 +46,6 @@ class Square:
     @property
     def position(self):
         """Getter function to retrieve private position attribute.
-        Return:
-            size of obj.
         """
         return self.__position
 
@@ -59,9 +58,9 @@ class Square:
 
         if not isinstance(value, tuple) or len(value) is not 2:
             raise TypeError("position must be a tuple of 2 positive integers")
-        elif not isinstance(value[0], int) or not isinstance(value[1], int):
+        if not isinstance(value[0], int) or not isinstance(value[1], int):
             raise TypeError("position must be a tuple of 2 positive integers")
-        elif value[0] < 0 or value[1] < 0:
+        if value[0] < 0 or value[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
@@ -76,8 +75,8 @@ class Square:
 
     def my_print(self):
         """Function that prints in stdout square with char #"""
-        if self.__size > 0:
-            print("")
+        if self.__size == 0:
+            print()
 
         copy = self.__position[:]
         print("{}".format('\n' * copy[1]), end="")
