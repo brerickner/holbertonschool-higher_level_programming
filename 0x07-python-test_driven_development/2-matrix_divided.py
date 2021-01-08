@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Our module that divides elements in a matrix"""
 
+
 def matrix_divided(matrix, div):
     """Method that divides elements in a matrix
         Args:
@@ -22,7 +23,7 @@ def matrix_divided(matrix, div):
         raise ZeroDivisionError("division by zero")
 
     if isinstance(matrix, list) is False or len(matrix) is 0:
-        raise TypeError(trixErr) 
+        raise TypeError(trixErr)
 
     for row in matrix:
         if len(matrix[0]) is not len(row):
@@ -34,9 +35,6 @@ def matrix_divided(matrix, div):
         for elements in row:
             if isinstance(elements, (int, float)) is False:
                 raise TypeError(trixErr)
-    
-    
 
-
-    return([list(map(lambda x: round(x/div, 2), matrix[row]))
+    return([list(map(lambda x: round(x / div, 2), matrix[row]))
             for row in range(len(matrix))])
