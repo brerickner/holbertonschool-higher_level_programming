@@ -21,9 +21,10 @@ def text_indentation(text):
             
             if((text[char + 1]) is " " or (text[char + 1]) is "\n"):
                 text = text[:char + 1] + replaceChar + text[char + 2:]
-                print(text, end="")
-                
+                continue
             else:
                 text = text[:char + 1] + replaceChar + text[char + 1:]
-                print(text, end="")
+                continue
+
+    print(text, end="")
             

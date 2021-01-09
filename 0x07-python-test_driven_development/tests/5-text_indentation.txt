@@ -26,9 +26,9 @@ Bre
 >>> text_indentation(" My name:4Bre")
  My name:
 <BLANKLINE>
-4Bre>>>
+4Bre
 
 >>> text_indentation("My name is: Bre?")
 My name is:
-<BLANKLINE>
+
 Bre?
