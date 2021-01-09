@@ -48,3 +48,11 @@ ZeroDivisionError: float division by zero
 >>> matrix_divided([[2, 5, 6], [8, 4, 1]])
 Traceback (most recent call last):
 TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+>>> matrix_divided([[2, 5, 6], [8, 4, 1, 4, 5]], 6)
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+
+>>> matrix_divided([[2, 5, 6], [8, 4, 1, 4, 5]], 6.0)
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
