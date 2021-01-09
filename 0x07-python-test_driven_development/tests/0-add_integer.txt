@@ -48,3 +48,54 @@ TypeError: a must be an integer
 Traceback (most recent call last):
 TypeError: a must be an integer
 
+>>> add_integer(-88.6, -17.9)
+-105
+
+>>> add_integer(-88.6416546546411, None)
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> add_integer("meow", "meow")
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(None, None)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+**** checking 'inf' aka infinity ***
+
+>>> add_integer(float('inf'))
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer('inf')
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(int('inf'))
+Traceback (most recent call last):
+ValueError: invalid literal for int() with base 10: 'inf'
+
+>>> add_integer(6, float('inf'))
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(float('inf'), 6)
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+
+**** checking NaN ****
+
+>>> add_integer(float('nan'))
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
+
+>>> add_integer(float('nan'), 6)
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
+
+>>> add_integer(6, float('nan'))
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
