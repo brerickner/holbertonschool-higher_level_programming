@@ -1,0 +1,24 @@
+IMPORT
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+TESTS
+
+>>> text_indentation("My name is: Bre Rickner")
+My name is:
+
+Bre Rickner>>>
+
+>>> text_indentation(" My name:Bre")
+ My name:
+
+Bre>>> text_indentation(" My name:\nBre")
+ My name:
+
+Bre>>> text_indentation(" My name:4Bre")
+ My name:
+
+4Bre>>> text_indentation("My name is: Bre?")
+My name is:
+
+Bre?>>>
