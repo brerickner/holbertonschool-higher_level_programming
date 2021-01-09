@@ -18,7 +18,12 @@ def text_indentation(text):
     # if special char, and next char is space skip two chars then start string
     for char in range(len(text)):
         if text[char] is ":" or text[char] is "." or text[char] is "?":
-            if text[:char + 1] is " " or "\n":
-
+            
+            if((text[char + 1]) is " " or (text[char + 1]) is "\n"):
                 text = text[:char + 1] + replaceChar + text[char + 2:]
                 print(text, end="")
+                
+            else:
+                text = text[:char + 1] + replaceChar + text[char + 1:]
+                print(text, end="")
+            
