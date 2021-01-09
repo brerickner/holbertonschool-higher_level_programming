@@ -9,22 +9,16 @@ def text_indentation(text):
         Raises:
             TypeError: if text is not a string
             """
-    newList = []
-    replaceChar = ("\n" * 2)
+    nLine = ("\n" * 2)
 
     if isinstance(text, str) is False:
         TypeError("text must be a string")
 
-    # if special char, and next char is space skip two chars then start string
-    for char in range(len(text)):
-        if text[char] is ":" or text[char] is "." or text[char] is "?":
-            
-            if((text[char + 1]) is " " or (text[char + 1]) is "\n"):
-                text = text[:char + 1] + replaceChar + text[char + 2:]
-                continue
-            else:
-                text = text[:char + 1] + replaceChar + text[char + 1:]
-                continue
+    # if special idx, and next idx is space skip two chars then start string
+    for idx in range(len(text)):
+        if text[idx] is ":" or text[idx] is "." or text[idx] is "?":
+            if idx < len(text) - 1 and (text[idx + 1]) is " ":
+                text = text[:idx + 1] + nLine + text[idx + 2:]
+            text = text[:idx + 1] + nLine + text[idx + 1:]
 
     print(text, end="")
-            
