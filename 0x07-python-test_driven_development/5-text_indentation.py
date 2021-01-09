@@ -5,9 +5,9 @@
 def text_indentation(text):
     """Method that places 2 new lines after specified chars
         Args:
-            text2: text2 being modified
+            text: text being modified
         Raises:
-            TypeError: if text2 is not a string
+            TypeError: if text is not a string
             """
 
     if isinstance(text, str) is False:
@@ -21,6 +21,7 @@ def text_indentation(text):
 
         if text2[idx] is ":" or text2[idx] is "." or text2[idx] is "?":
             print("\n")
-            if idx < len(text2) - 1 and text2[idx + 1] is " " or text2[idx + 1] is "\n":
+            if idx < len(text2) - 1 and text2[idx + 1] is " " \
+                    or text2[idx + 1] is "\n":
                 idx += 1
             idx += 1
