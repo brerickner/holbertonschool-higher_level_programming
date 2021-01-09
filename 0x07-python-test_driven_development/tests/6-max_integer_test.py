@@ -18,10 +18,11 @@ class TestMaxInteger(unittest.TestCase):
     def test_for_realz(self):
         """tests that should find max int for real"""
         self.assertEqual(max_integer([1]), 1)
-        self.assertEqual(max_integer([221, 8, 77]),221)
+        self.assertEqual(max_integer([221, 8, 77]), 221)
         self.assertEqual(max_integer([-100, -99, -10]), -10)
         self.assertEqual(max_integer([0]), 0)
         self.assertEqual(max_integer([99, 99, 99, 98.5]), 99)
+        self.assertEqual(max_integer, None)
 
 
     
