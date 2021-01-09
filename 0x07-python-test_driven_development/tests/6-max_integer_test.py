@@ -23,4 +23,8 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([0]), 0)
         self.assertEqual(max_integer([99, 99, 99, 98.5]), 99)
 
+    def test_in_the_middle(self):
+        """test for max in middle"""
+        self.assertAlmostEqual(max_integer([5,9,6]) 9)
+
     
