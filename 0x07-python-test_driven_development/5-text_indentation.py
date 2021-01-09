@@ -1,24 +1,28 @@
 #!/usr/bin/python3
-"""A module that prints 2 new lines after '.''?'':' in a text"""
+"""A module that prints 2 new lines after '.''?'':' in a text2"""
 
 
 def text_indentation(text):
     """Method that places 2 new lines after specified chars
         Args:
-            text: text being modified
+            text2: text2 being modified
         Raises:
-            TypeError: if text is not a string
+            TypeError: if text2 is not a string
             """
-    nLine = ("\n" * 2)
 
     if isinstance(text, str) is False:
         TypeError("text must be a string")
 
-    # if special idx, and next idx is space skip two chars then start string
-    for idx in range(len(text)):
-        if text[idx] is ":" or text[idx] is "." or text[idx] is "?":
-            if idx < len(text) - 1 and (text[idx + 1]) is " ":
-                text = text[:idx + 1] + nLine + text[idx + 2:]
-            text = text[:idx + 1] + nLine + text[idx + 1:]
+    text2 = text.strip()
 
-    print(text, end="")
+
+    # if special idx, and next idx is space skip two chars then start string
+    for idx in range(len(text2)):
+        print(text2[idx], end="")
+
+        if text2[idx] is ":" or text2[idx] is "." or text2[idx] is "?":
+            print("\n")
+            if idx < len(text2) - 1 and text2[idx + 1] is " " or text2[idx + 1] is "\n":
+                idx += 1
+            idx += 1
+        

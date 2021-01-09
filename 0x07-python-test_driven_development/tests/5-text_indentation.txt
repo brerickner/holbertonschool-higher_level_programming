@@ -4,31 +4,23 @@ IMPORT
 
 TESTS
 
->>> text_indentation("My name is: Bre Rickner")
+
+>>> text_indentation("My name is: Bre? :)")
 My name is:
 <BLANKLINE>
-Bre Rickner
-
+ Bre?
+<BLANKLINE>
+ :
+<BLANKLINE>
+)
 
 >>> text_indentation(" My name:Bre")
- My name:
+My name:
 <BLANKLINE>
 Bre
 
-
-
->>> text_indentation(" My name:\nBre")
- My name:
+>>> text_indentation(" My name: \n Bre")
+My name:
 <BLANKLINE>
-Bre
-
-
->>> text_indentation(" My name:4Bre")
- My name:
 <BLANKLINE>
-4Bre
-
->>> text_indentation("My name is: Bre?")
-My name is:
-
-Bre?
+ Bre
