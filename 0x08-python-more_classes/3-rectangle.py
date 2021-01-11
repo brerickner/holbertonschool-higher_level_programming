@@ -56,7 +56,7 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
-        
+
     def area(self):
         """Method to get area of rectangle.
         Return:
@@ -70,20 +70,18 @@ class Rectangle:
             perimeter of rectangle, 0 when width or height 0
             """
         if self.__height is 0 or self.__width is 0:
-            print("")
             return 0
-        
-       # copy = self.__perimeter[:]
 
-        for i in range(self.__height):
-            print("{}".format("#" * self.__width))
-       # print("{}".format("#" * self.__width), end="")
-
-            
         return ((self.__height * 2) + (self.__width * 2))
-"""
+
+    def __str__(self):
+        """Method to print string of a rectangle."""
+        printStr = ""
+        printOcto = ("#" * self.__width)
+        printNL = "\n"
         if self.__height is 0 or self.__width is 0:
-            print("")
-        for i in range(self.__width):
-            print("{}".format("#" * self.__width))
-            """
+            return printStr
+        for i in range(self.__height - 1):
+            printStr += printOcto + printNL
+        printStr += printOcto
+        return printStr
