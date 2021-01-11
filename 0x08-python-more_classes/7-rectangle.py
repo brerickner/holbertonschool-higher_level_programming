@@ -81,7 +81,7 @@ class Rectangle:
     def __str__(self):
         """Method to print string of a rectangle."""
         printStr = ""
-        printOcto = (self.print_symbol * self.__width)
+        printOcto = str(self.print_symbol * self.__width)
         printNL = "\n"
         if self.__height is 0 or self.__width is 0:
             return printStr
