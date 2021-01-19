@@ -90,7 +90,7 @@ LIST OF NEGATIVE INTS
 [-9, -5, -4, -3]
 
 ********************************
-TEST WITH ASSORTED LIST OF TYPES
+TEST LIST WITH ASSORTED TYPES
 ********************************
 >>> my_list = MyList()
 >>> typesList = ["Squeaky", 99, 8.0]
