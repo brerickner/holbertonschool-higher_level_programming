@@ -102,7 +102,7 @@ Traceback (most recent call last):
 TypeError: unorderable types: int() < str()
 
 *********************************************
-LIST WITH FLOATS(NEG AND DIFF DECIMAL PLACES)
+LIST WITH FLOATS(NEG, VARYING DECIMAL PLACES)
 *********************************************
 >>> my_list =MyList()
 >>> floatList = [5.0, 8.3, 8.6, 9.0, -6.01]
