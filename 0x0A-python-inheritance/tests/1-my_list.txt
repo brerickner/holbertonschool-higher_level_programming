@@ -8,9 +8,9 @@ IMPORT MODULE
 TESTS
 =====
 
-*******************
-EXTENDING ONTO LIST
-*******************
+************************
+LIST USING EXTEND METHOD
+************************
 >>> my_list = MyList()
 >>> my_list.extend([8, 5, 3, 9, 1])
 >>> my_list.print_sorted()
@@ -34,17 +34,17 @@ EXTENDING ONTO LIST
 >>> my_list.print_sorted()
 [2, 3, 4, 7, 9]
 
-*****************
-POP ITEM OFF LIST
-*****************
+*************************
+LIST WITH ITEM POPPED OFF 
+*************************
 >>> my_list.pop()
 3
 >>> my_list.print_sorted()
 [2, 4, 7, 9]
 
-**************************
-PASS LIST AS ARG TO MYLIST
-**************************
+****************************
+LIST PASSED AS ARG TO MYLIST
+****************************
 >>> meowList = MyList([8, 5, 3, 9, 1])
 Traceback (most recent call last):
 TypeError: __init__() takes 1 positional argument but 2 were given
@@ -54,9 +54,9 @@ TypeError: __init__() takes 1 positional argument but 2 were given
 Traceback (most recent call last):
 TypeError: __init__() takes 1 positional argument but 2 were given
 
-**********
-EMPTY LIST
-**********
+******************
+LIST THAT IS EMPTY
+******************
 >>> my_list = MyList()
 >>> print(my_list)
 []
@@ -90,7 +90,7 @@ LIST OF NEGATIVE INTS
 [-9, -5, -4, -3]
 
 ********************************
-TEST LIST WITH ASSORTED TYPES
+LIST WITH ASSORTED TYPES
 ********************************
 >>> my_list = MyList()
 >>> typesList = ["Squeaky", 99, 8.0]
@@ -102,7 +102,7 @@ Traceback (most recent call last):
 TypeError: unorderable types: int() < str()
 
 *********************************************
-TEST WITH FLOATS(NEG AND DIFF DECIMAL PLACES)
+LIST WITH FLOATS(NEG AND DIFF DECIMAL PLACES)
 *********************************************
 >>> my_list =MyList()
 >>> floatList = [5.0, 8.3, 8.6, 9.0, -6.01]
@@ -112,9 +112,9 @@ TEST WITH FLOATS(NEG AND DIFF DECIMAL PLACES)
 >>> my_list.print_sorted()
 [-6.01, 5.0, 8.3, 8.6, 9.0]
 
-******************************
-LIST WITH ONE ITEM WITH APPEND
-******************************
+***********************************
+LIST WITH ONE ITEM AND USING APPEND
+***********************************
 >>> my_list = MyList()
 >>> my_list.append(1)
 >>> print(my_list)
