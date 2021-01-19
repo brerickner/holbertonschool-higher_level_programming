@@ -1,0 +1,40 @@
+=============
+IMPORT MODULE
+=============
+
+>>> is_kind_of_class = __import__('3-is_kind_of_class').is_kind_of_class
+
+=====
+TESTS
+=====
+
+************************
+IS FLOAT FLOAT, INT, OBJ
+************************
+>>> a = 1
+>>> is_kind_of_class(a, int)
+True
+>>> is_kind_of_class(a, float)
+False
+>>> is_kind_of_class(a, object)
+True
+>>> is_kind_of_class(a, str)
+False
+
+**********************************
+IS STRING OBJ, STR, FLOAT, LIST
+**********************************
+>>> b = "string"
+>>> is_kind_of_class(b, str)
+True
+>>> is_kind_of_class(b, float)
+False
+
+>>> is_kind_of_class(b, obj)
+Traceback (most recent call last):
+NameError: name 'obj' is not defined
+
+>>> is_kind_of_class(b, object)
+True
+>>> is_kind_of_class(b, list)
+False
