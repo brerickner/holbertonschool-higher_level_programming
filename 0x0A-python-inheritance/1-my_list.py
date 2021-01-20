@@ -8,7 +8,6 @@ class MyList(list):
 
     def __init__(self):
         """Instantiation of Mylist obj"""
-            # self.__self = self
 
     def print_sorted(self):
         """Method to print sorted list of attr and methods from obj"""
