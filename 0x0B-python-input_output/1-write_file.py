@@ -5,7 +5,7 @@
 def write_file(filename="", text=""):
     """Method that writes a string to txt file
         Args:
-            filename: file to read from
+            filename: file to write to
             text: text to write
         Returns:
             number of chars written
