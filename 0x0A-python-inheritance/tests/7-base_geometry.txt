@@ -8,23 +8,113 @@ IMPORT MODULE
 TESTS
 =====
 
+***********
+NOT DEFINED
+***********
+>>> bg.integer_validator("age", True)
+Traceback (most recent call last):
+NameError: name 'bg' is not defined
 
-******************
-WORDS WORDS WORDS
-******************
+**************************
+CHECK RAISE FOR VALUEERROR 
+**************************
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("distance", -4)
+Traceback (most recent call last):
+ValueError: distance must be greater than 0
 
-***************
-WORDS WORDS WORDS
-***************
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("distance", 0)
+Traceback (most recent call last):
+ValueError: distance must be greater than 0
+
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+ValueError: age must be greater than 0
+
+*************************
+CHECK RAISE FOR TYPEERROR
+*************************
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("age", "bre")
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("age", None)
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+
+***************************
+NO ARGS PASSED TO VALIDATOR
+***************************
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> bg.integer_validator(None, None)
+Traceback (most recent call last):
+TypeError: None must be an integer
+
+>>> bg.integer_validator("None", None)
+Traceback (most recent call last):
+TypeError: None must be an integer
 
 *********************
-WORDS WORDS WORDS
+PASS LIST INTO VALUE
 *********************
+>>> bg.integer_validator("age", [8, 6])
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", ["meow", "meow"])
+Traceback (most recent call last):
+TypeError: age must be an integer
 
 ********************************
-WORDS WORDS WORDS
+RAISES EXCEPTION FOR AREA METHOD
 ********************************
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
 
-***********************
-WORDS WORDS WORDS
-***********************
+*******
+ONE ARG
+*******
+>>> bg.integer_validator(None)
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>>> bg.integer_validator("age")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>>> bg.integer_validator(5)
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+******
+FLOATS
+******
+>>> bg.integer_validator("float", None)
+Traceback (most recent call last):
+TypeError: float must be an integer
+
+>>> bg.integer_validator("float", 6.66666)
+Traceback (most recent call last):
+TypeError: float must be an integer
+
+>>> bg.integer_validator("age", 6.66666)
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+
+
+**********
+BOOL FALSE
+**********
+>>> bg.integer_validator("age", False)
+Traceback (most recent call last):
+ValueError: age must be greater than 0
