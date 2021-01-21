@@ -19,9 +19,11 @@ class Student():
             """
         if isinstance(attrs, list) is False:
             return self.__dict__
-            
-        if all(isinstance(stuff, str) for stuff in attrs) is True:
-                print("stuff string")
-                print(self.__dict__[stuff])
+
+        if all(isinstance(stuff, str) for stuff in attrs) is False:
+                
+            print("stuff string")
+            print(self.__dict__[stuff])
+            return self.__dict__
                
             
