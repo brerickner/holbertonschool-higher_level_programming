@@ -20,10 +20,16 @@ class Student():
         if isinstance(attrs, list) is False:
             return self.__dict__
 
-        if all(isinstance(stuff, str) for stuff in attrs) is False:
+        if all(isinstance(attrSearch, str) for attrSearch in attrs) is True:
                 
-            print("stuff string")
-            print(self.__dict__[stuff])
-            return self.__dict__
+            for attrName in self.__dict__:
+                if attrName in attrs:
+                    break
+        
+            return self.__dict__[attrName]
+                      
+        return self.__dict__
+            
+        
                
             
