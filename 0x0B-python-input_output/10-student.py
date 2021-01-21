@@ -21,15 +21,11 @@ class Student():
             return self.__dict__
 
         if all(isinstance(attrSearch, str) for attrSearch in attrs) is True:
-                
+
             for attrName in self.__dict__:
                 if attrName in attrs:
                     break
-        
+
             return self.__dict__[attrName]
-                      
+
         return self.__dict__
-            
-        
-               
-            
