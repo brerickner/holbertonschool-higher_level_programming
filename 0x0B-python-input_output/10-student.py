@@ -17,15 +17,17 @@ class Student():
             Args:
                 attrs: attributes
             """
+        copyDict = {}
+        '''covers list not of type list or None'''
         if isinstance(attrs, list) is False:
             return self.__dict__
-
+        '''checks if attrs listed are all strings'''
         if all(isinstance(attrSearch, str) for attrSearch in attrs) is True:
+            '''if string in attrs is also an attribute name retrieve it'''
+            for attName in attrs:
+                if attName in self.__dict__:
+                    copyDict[attName] = self.__dict__[attName]
+            return copyDict
 
-            for attrName in self.__dict__:
-                if attrName in attrs:
-                    break
-
-            return self.__dict__[attrName]
-
+        '''else retrieve all attributes'''
         return self.__dict__
