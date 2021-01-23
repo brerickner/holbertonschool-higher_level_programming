@@ -9,9 +9,10 @@ from models.base import Base
 class TestBaseClass(unittest.TestCase):
     """Class that contains unittest methods for base.py"""
     
-    def setUp():
-        """Starting Base with nb_objects = 0"""
-        Base._Base_nb__objects = 0
+    def setUp(self):
+        pass
+    def tearDown(self):
+        pass
 
     def test_id_mult_objs(self):
         """Method that tests mult obj id's created
