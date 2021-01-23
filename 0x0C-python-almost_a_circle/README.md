@@ -1,6 +1,5 @@
 # 0x0C. Python - Almost a circle
 
-Foobar is a Python library for dealing with word pluralization.
 
 ## Learning Objectives
 ###### What is Unit testing and how to implement it in a large project
