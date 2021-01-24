@@ -2,17 +2,15 @@
 """Module with unittest methods for base.py"""
 
 import unittest
-from models import base
 from models.base import Base
 
 
 class TestBaseClass(unittest.TestCase):
     """Class that contains unittest methods for base.py"""
-    
+ 
+       
     def setUp(self):
-        pass
-    def tearDown(self):
-        pass
+        Base._Base__nb_objects = 0
 
     def test_id_mult_objs(self):
         """Method that tests mult obj id's created
@@ -41,7 +39,4 @@ class TestBaseClass(unittest.TestCase):
     def test_one_id(self):
         """Test instances using same obj only"""
         obj = Base(-1)
-        self.assertEqual
-
-if __name__ == '__main__':
-    unittest.main()
+        self.assertEqual(obj.id, -1)
