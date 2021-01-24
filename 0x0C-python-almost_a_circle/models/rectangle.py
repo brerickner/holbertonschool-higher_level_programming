@@ -101,3 +101,12 @@ class Rectangle(Base):
         """Method to print Rectangle to stdout in # chars"""
         for rows in range(self.__height):
             print("#" * self.__width)
+    
+    def __str__(self):
+        """String representation of Rectangle
+            Return:
+                new string representation of Rectangle
+            """
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"\
+            .format(self.id, self.x, self.y, self.width,\
+            self.height)
