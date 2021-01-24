@@ -112,7 +112,7 @@ class Rectangle(Base):
                 new string representation of Rectangle
             """
 
-        return "[Rectangle] ({}) {:d}/{:d} - {:d}/{:d}"\
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"\
             .format(self.id, self.x, self.y, self.width,
                     self.height)
 
