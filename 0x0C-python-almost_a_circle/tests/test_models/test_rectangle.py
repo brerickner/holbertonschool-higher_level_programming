@@ -12,52 +12,74 @@ class TestRectangleClass(unittest.TestCase):
         r1 = Rectangle(10, 2)
         self.assertEqual(r1.id, 1)
 
-"""Method to raise exceptions for width/height"""
-    """r1 = Rectangle(-2, 2)
-    ValueError: width must be > 0 
+    def test_width_height(self):
+        """Method to raise exceptions for width/height"""
+        wdValErr = "width must be > 0"
+        htValErr = "height must be > 0"
+        wdTypeErr = "width must be an integer"
+        htTypeErr = "height must be an integer"
 
-    r1 = Rectangle(0, 2)
-    ValueError: width must be > 0
+        with self.assertRaisesRegex(ValueError, wdValErr):
+            r1= Rectangle(-2, 2)
 
-    r1 = Rectangle(0, 0)
-    ValueError: width must be > 0 
+        with self.assertRaisesRegex(ValueError, wdValErr): 
+            r1 = Rectangle(0, 2)
+     
+        with self.assertRaisesRegex(ValueError, wdValErr):
+            r1 = Rectangle(0, 0)
+        
+        with self.assertRaisesRegex(ValueError, htValErr):
+            r1 = Rectangle(7, -1)
+        
+        with self.assertRaisesRegex(TypeError, wdTypeErr):
+            r1 = Rectangle(None, None)
+        
+        with self.assertRaisesRegex(TypeError, wdTypeErr):
+            r1 = Rectangle(None, 10)
+
+        with self.assertRaisesRegex(TypeError, htTypeErr):
+            r1 = Rectangle(4, None)
+        
+        with self.assertRaisesRegex(TypeError, htTypeErr):
+            r1 = Rectangle(1, 10.00000000000000000)
+
+        with self.assertRaisesRegex(TypeError, htTypeErr):
+            r1 = Rectangle(1, -1.0)
+
+        with self.assertRaisesRegex(TypeError, wdTypeErr):
+            r1 = Rectangle('x', 3)
+
+       
+        
+
+        def test_area_rec(self):
+            """Method to test area of Rectangle"""
+            r1 = Rectangle(2, 10)
+            self.assertEqual(r1.area(), 20)
+
+        
+        
+        """
+   
+       'Method to test cases involving x, y coordinates'
+        def test_x_y(self):
+        yValErr = "y must be >= 0"
+        xValErr = "x must be >= 0"
+        xTypeErr = "x must be an integer"
+        yTypeErr = "y must be an integer"
+        
+        r3 = Rectangle(3, 3, None, None)
+        print(r2)
+        TypeError: x must be an integer
+
+        r3 = Rectangle(3, 3, -1, 1)
+        ValueError: x must be >= 0
+
+        r3 = Rectangle(3, 3, 1, -1)
+        ValueError: y must be >= 0"""
+        
     
-    r1 = Rectangle(7, -1)
-    ValueError: height must be > 0 
-    
-    r1 = Rectangle(None, None)
-    TypeError: width must be an integer
 
-    r1 = Rectangle(2, 2)
-    
-    r4 = Rectangle(None, 10)
-    print(r4.area())
-    width must be an integer
-
-    r4 = Rectangle(1.1, 10)
-    print(r4.area())
-    width must be an integer
-
-    r4 = Rectangle(1, 10.00000000000000000)
-    print(r4.area())
-    TypeError: height must be an integer
-
-    r4 = Rectangle(1, -1.0)
-    print(r4.area())
-    ValueError: height must be > 0 
-
-    r4 = Rectangle('x', 3)
-    print(r4.area())
-    TypeError: width must be an integer
-
-TESTS FOR X, Y
-    r3 = Rectangle(3, 3, None, None)
-    print(r2)
-    TypeError: x must be an integer
-    
-    
-    
-    """
 
 
 
