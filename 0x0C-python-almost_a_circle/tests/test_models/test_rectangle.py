@@ -114,15 +114,7 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(str(r4), '[Rectangle] (2) 3/3 - 3/3')
 
     def test_positional_args(self):
-        """Method to test no-keyword arguments"""
-        yValErr = "y must be >= 0"
-        xValErr = "x must be >= 0"
-        xTypeErr = "x must be an integer"
-        yTypeErr = "y must be an integer"
-        wdValErr = "width must be > 0"
-        htValErr = "height must be > 0"
-        wdTypeErr = "width must be an integer"
-        htTypeErr = "height must be an integer"
+        """Method to test no-keyword and keyword arguments"""
 
         r1 = Rectangle(10, 10, 10, 10)
         self.assertEqual(str(r1), '[Rectangle] (1) 10/10 - 10/10')
@@ -136,6 +128,24 @@ class TestRectangleClass(unittest.TestCase):
         r1.update(id=None)
         self.assertEqual(str(r1), '[Rectangle] (14) 10/10 - 2/3')
 
+        r1.update(y=1, width=9, x=1, id=-89, height=9)
+        self.assertEqual(str(r1), '[Rectangle] (-89) 1/1 - 9/9')
+
+
+    def test_update_raises(self):
+        """Method to test update method exception raises"""
+        
+        yValErr = "y must be >= 0"
+        xValErr = "x must be >= 0"
+        xTypeErr = "x must be an integer"
+        yTypeErr = "y must be an integer"
+        wdValErr = "width must be > 0"
+        htValErr = "height must be > 0"
+        wdTypeErr = "width must be an integer"
+        htTypeErr = "height must be an integer"
+
+        r1 = Rectangle(6, 2, 1, 8, 6)
+
         with self.assertRaisesRegex(ValueError, wdValErr):
             r1.update(6, 0, 1, 8, 6)
 
@@ -147,6 +157,19 @@ class TestRectangleClass(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, yValErr):
             r1.update(8, 8, 7, 10, -7)
+
+        with self.assertRaisesRegex(ValueError, yValErr):
+            r1.update(y=-1, width=2, x=3, id=89)
+        
+        with self.assertRaisesRegex(ValueError, wdValErr):
+            r1.update(y=1, width=0, x=3, id=89)
+
+        with self.assertRaisesRegex(ValueError, xValErr):
+            r1.update(y=1, width=9, x=-1, id=89)
+        
+        with self.assertRaisesRegex(ValueError, htValErr):
+            r1.update(y=1, width=9, x=1, height=0)
+        
 
         """
         def test_pep8_rec(self):
