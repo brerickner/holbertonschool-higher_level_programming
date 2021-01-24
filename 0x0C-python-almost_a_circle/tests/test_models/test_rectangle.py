@@ -49,35 +49,33 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, wdTypeErr):
             r1 = Rectangle('x', 3)
 
-       
-        
-
         def test_area_rec(self):
             """Method to test area of Rectangle"""
             r1 = Rectangle(2, 10)
             self.assertEqual(r1.area(), 20)
 
-        
-        
-        """
-   
-       'Method to test cases involving x, y coordinates'
         def test_x_y(self):
-        yValErr = "y must be >= 0"
-        xValErr = "x must be >= 0"
-        xTypeErr = "x must be an integer"
-        yTypeErr = "y must be an integer"
+            """Method to test cases involving x, y coordinates"""
         
-        r3 = Rectangle(3, 3, None, None)
-        print(r2)
-        TypeError: x must be an integer
-
-        r3 = Rectangle(3, 3, -1, 1)
-        ValueError: x must be >= 0
-
-        r3 = Rectangle(3, 3, 1, -1)
-        ValueError: y must be >= 0"""
+            yValErr = "y must be >= 0"
+            xValErr = "x must be >= 0"
+            xTypeErr = "x must be an integer"
+            yTypeErr = "y must be an integer"
         
+            with self.assertRaisesRegex(TypeError, xTypeErr):
+                r1 = Rectangle(3, 3, None, None)
+            
+            with self.assertRaisesRegex(ValueError, xValErr):
+                r1 = Rectangle(3, 3, -1, 1)
+            
+            with self.assertRaisesRegex(ValueError, yValErr):
+                r1 = Rectangle(3, 3, 1, -1)
+        """
+        with self.assertRaisesRegex(ValueError, wdTypeErr):
+        with self.assertRaisesRegex(ValueError, wdTypeErr):
+        with self.assertRaisesRegex(ValueError, wdTypeErr):
+
+        """
     
 
 
