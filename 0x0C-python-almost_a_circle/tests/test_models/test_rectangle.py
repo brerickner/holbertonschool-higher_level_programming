@@ -131,10 +131,9 @@ class TestRectangleClass(unittest.TestCase):
         r1.update(y=1, width=9, x=1, id=-89, height=9)
         self.assertEqual(str(r1), '[Rectangle] (-89) 1/1 - 9/9')
 
-
     def test_update_raises(self):
         """Method to test update method exception raises"""
-        
+
         yValErr = "y must be >= 0"
         xValErr = "x must be >= 0"
         xTypeErr = "x must be an integer"
@@ -160,26 +159,23 @@ class TestRectangleClass(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, yValErr):
             r1.update(y=-1, width=2, x=3, id=89)
-        
+
         with self.assertRaisesRegex(ValueError, wdValErr):
             r1.update(y=1, width=0, x=3, id=89)
 
         with self.assertRaisesRegex(ValueError, xValErr):
             r1.update(y=1, width=9, x=-1, id=89)
-        
+
         with self.assertRaisesRegex(ValueError, htValErr):
             r1.update(y=1, width=9, x=1, height=0)
-        
 
-        """
+        with self.assertRaisesRegex(TypeError, wdTypeErr):
+            r1.update(y=1, width=None, x=1, id=-89, height=9)
+
         def test_pep8_rec(self):
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(
-            ['models/base.py', 'models/rectangle.py',
-             'tests/test_models/test_rectangle.py',
-             'tests/test_models/test_base.py'])
-        self.assertEqual(result.total_errors, 0, "Needs pepfixed")
-        with self.assertRaisesRegex(ValueError, wdTypeErr):
-        with self.assertRaisesRegex(ValueError, wdTypeErr):
-
-        """
+            pep8style = pep8.StyleGuide(quiet=True)
+            result = pep8style.check_files(
+                ['models/base.py', 'models/rectangle.py',
+                'tests/test_models/test_rectangle.py',
+                'tests/test_models/test_base.py'])
+            self.assertEqual(result.total_errors, 0, "Needs pepfixed")
