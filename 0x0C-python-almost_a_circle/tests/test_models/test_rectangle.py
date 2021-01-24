@@ -30,7 +30,7 @@ class TestRectangleClass(unittest.TestCase):
         r4 = Rectangle(10, 2, 0, 0, 0)
         self.assertEqual(r4.id, 0)
 
-    def test_width_height(self):
+    def test_width_height_raises(self):
         """Method to raise exceptions for width/height"""
         wdValErr = "width must be > 0"
         htValErr = "height must be > 0"
@@ -75,7 +75,7 @@ class TestRectangleClass(unittest.TestCase):
         r1 = Rectangle(2, 10)
         self.assertEqual(r1.area(), 20)
 
-    def test_x_y(self):
+    def test_x_y_raises(self):
         """Method to test cases involving x, y coordinates"""
 
         yValErr = "y must be >= 0"
@@ -112,8 +112,46 @@ class TestRectangleClass(unittest.TestCase):
 
         r4 = Rectangle(3, 3, 3, 3)
         self.assertEqual(str(r4), '[Rectangle] (2) 3/3 - 3/3')
-    """
-    def test_pep8_rec(self):
+
+    def test_positional_args(self):
+        """Method to test no-keyword arguments"""
+        yValErr = "y must be >= 0"
+        xValErr = "x must be >= 0"
+        xTypeErr = "x must be an integer"
+        yTypeErr = "y must be an integer"
+        wdValErr = "width must be > 0"
+        htValErr = "height must be > 0"
+        wdTypeErr = "width must be an integer"
+        htTypeErr = "height must be an integer"
+        
+        r1 = Rectangle(10, 10, 10, 10)
+        self.assertEqual(str(r1), '[Rectangle] (1) 10/10 - 10/10')
+
+        r1.update(89)
+        self.assertEqual(str(r1), '[Rectangle] (89) 10/10 - 10/10')
+
+        r1.update(14, 2, 3)
+        self.assertEqual(str(r1), '[Rectangle] (14) 10/10 - 2/3')
+
+        r1.update(id=None)
+        self.assertEqual(str(r1), '[Rectangle] (14) 10/10 - 2/3')
+
+        with self.assertRaisesRegex(ValueError, wdValErr):
+            r1.update(6, 0, 1, 8, 6)
+
+        with self.assertRaisesRegex(ValueError, htValErr):
+            r1.update(6, 8, 0, 8, 6)
+
+        with self.assertRaisesRegex(ValueError, xValErr):
+            r1.update(8, 8, 7, -10, 7)
+
+        with self.assertRaisesRegex(ValueError, yValErr):
+            r1.update(8, 8, 7, 10, -7)
+      
+
+        """
+
+        def test_pep8_rec(self):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(
             ['models/base.py', 'models/rectangle.py',
@@ -123,5 +161,5 @@ class TestRectangleClass(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, wdTypeErr):
         with self.assertRaisesRegex(ValueError, wdTypeErr):
-
+            
         """
