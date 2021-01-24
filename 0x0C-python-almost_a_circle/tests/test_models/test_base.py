@@ -6,9 +6,9 @@ from models.base import Base
 
 
 class TestBaseClass(unittest.TestCase):
+
     """Class that contains unittest methods for base.py"""
- 
-       
+
     def setUp(self):
         """Method to assigning superclass private variable
            equal to zero before beginning testing"""
@@ -31,7 +31,7 @@ class TestBaseClass(unittest.TestCase):
 
         b5 = Base("meow")
         self.assertEqual(b5.id, "meow")
-        
+
         b6 = Base("6.26")
         self.assertEqual(b6.id, "6.26")
 
