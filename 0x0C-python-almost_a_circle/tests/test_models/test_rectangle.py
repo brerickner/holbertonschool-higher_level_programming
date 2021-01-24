@@ -12,7 +12,10 @@ class TestRectangleClass(unittest.TestCase):
 
     def test_pep8_rec(self):
         pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['base.py', 'rectangle.py'])
+        result = pep8style.check_files(
+            ['models/base.py', 'models/rectangle.py',
+             'tests/test_models/test_rectangle.py',
+             'tests/test_models/test_base.py'])
         self.assertEqual(result.total_errors, 0, "Needs pepfixed")
 
     def test_rectangle_id(self):
