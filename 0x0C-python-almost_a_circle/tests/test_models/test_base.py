@@ -10,6 +10,8 @@ class TestBaseClass(unittest.TestCase):
  
        
     def setUp(self):
+        """Method to assigning superclass private variable
+           equal to zero before beginning testing"""
         Base._Base__nb_objects = 0
 
     def test_id_mult_objs(self):
