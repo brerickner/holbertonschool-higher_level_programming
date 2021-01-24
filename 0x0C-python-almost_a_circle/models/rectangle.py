@@ -103,16 +103,26 @@ class Rectangle(Base):
         """Method to print Rectangle to stdout in # chars"""
         for down in range(self.y):
             print("")
-        for over in range(self.x):
-            print(" ", end="")
         for rows in range(self.height):
-            print("#" * self.width)
+            print((" " * self.x) + ("#" * self.width))
 
     def __str__(self):
-        """String representation of Rectangle
+        """Method to override string representation of Rectangle.
             Return:
                 new string representation of Rectangle
             """
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"\
             .format(self.id, self.x, self.y, self.width,
                     self.height)
+    
+    def update(self, *args):
+        """Method to assign argument to each attribute"""
+        
+        argList = ["id", "width", "height", "width", "x", "y"]
+
+        for index, arg in enumerate(args):
+            setattr(self, argList[index], args[index])
+
+            
+
+            
