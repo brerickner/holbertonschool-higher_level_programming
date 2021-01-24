@@ -112,15 +112,19 @@ class Rectangle(Base):
                 new string representation of Rectangle
             """
     
-        return "[Rectangle] ({}) {:d}/{:d} - {:d}/{:d}"\
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"\
             .format(self.id, self.x, self.y, self.width,
                     self.height)
 
     def update(self, *args, **kwargs):
         """Method to assign argument to each attribute"""
 
-        argList = ["id", "width", "height", "x", "y"]
+        if len(args) != 0:
+            argList = ["id", "width", "height", "x", "y"]
 
-        for index, arg in enumerate(args):
-            setattr(self, argList[index], args[index])
+            for index, arg in enumerate(args):
+                setattr(self, argList[index], args[index])
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
