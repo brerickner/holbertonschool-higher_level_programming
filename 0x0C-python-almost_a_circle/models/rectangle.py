@@ -35,7 +35,7 @@ class Rectangle(Base):
                 value: int value assigned to width.
             """
         if isinstance(value, int) is False:
-            raise TypeError("height must be an integer")
+            raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0 ")
 
@@ -101,8 +101,12 @@ class Rectangle(Base):
 
     def display(self):
         """Method to print Rectangle to stdout in # chars"""
-        for rows in range(self.__height):
-            print("#" * self.__width)
+        for down in range(self.y):
+            print("")
+        for over in range(self.x):
+            print(" ", end="")
+        for rows in range(self.height):
+            print("#" * self.width)
 
     def __str__(self):
         """String representation of Rectangle
