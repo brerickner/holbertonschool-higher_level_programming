@@ -27,6 +27,9 @@ class TestRectangleClass(unittest.TestCase):
         r3 = Rectangle(10, 2, 0, 0, 12)
         self.assertEqual(r3.id, 12)
 
+        r4 = Rectangle(10, 2, 0, 0, 0)
+        self.assertEqual(r4.id, 0)
+
     def test_width_height(self):
         """Method to raise exceptions for width/height"""
         wdValErr = "width must be > 0"

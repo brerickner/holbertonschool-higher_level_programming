@@ -39,6 +39,9 @@ class TestBaseClass(unittest.TestCase):
         b7 = Base(None)
         self.assertEqual(b7.id, 2)
 
+        b8 = Base(0)
+        self.assertEqual(b8.id, 0)
+
     def test_one_id(self):
         """Method to test obj only"""
         obj = Base(-1)
