@@ -123,7 +123,7 @@ class TestRectangleClass(unittest.TestCase):
         htValErr = "height must be > 0"
         wdTypeErr = "width must be an integer"
         htTypeErr = "height must be an integer"
-        
+
         r1 = Rectangle(10, 10, 10, 10)
         self.assertEqual(str(r1), '[Rectangle] (1) 10/10 - 10/10')
 
@@ -147,10 +147,8 @@ class TestRectangleClass(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, yValErr):
             r1.update(8, 8, 7, 10, -7)
-      
 
         """
-
         def test_pep8_rec(self):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(
@@ -158,8 +156,7 @@ class TestRectangleClass(unittest.TestCase):
              'tests/test_models/test_rectangle.py',
              'tests/test_models/test_base.py'])
         self.assertEqual(result.total_errors, 0, "Needs pepfixed")
+        with self.assertRaisesRegex(ValueError, wdTypeErr):
+        with self.assertRaisesRegex(ValueError, wdTypeErr):
 
-        with self.assertRaisesRegex(ValueError, wdTypeErr):
-        with self.assertRaisesRegex(ValueError, wdTypeErr):
-            
         """
