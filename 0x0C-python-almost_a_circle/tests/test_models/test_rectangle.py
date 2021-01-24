@@ -4,11 +4,17 @@
 import unittest
 import pep8
 from models.rectangle import Rectangle
+from models.base import Base
 
 
 class TestRectangleClass(unittest.TestCase):
 
     """Class that contains unittest methods for Rectangle module"""
+
+    def setUp(self):
+        """Method to assigning superclass private variable
+           equal to zero before beginning testing"""
+        Base._Base__nb_objects = 0
 
     def test_pep8_rec(self):
         pep8style = pep8.StyleGuide(quiet=True)
@@ -60,33 +66,33 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, wdTypeErr):
             r1 = Rectangle('x', 3)
 
-        def test_area_rec(self):
-            """Method to test area of Rectangle"""
-            r1 = Rectangle(2, 10)
-            self.assertEqual(r1.area(), 20)
+    def test_area_rec(self):
+        """Method to test area of Rectangle"""
+        r1 = Rectangle(2, 10)
+        self.assertEqual(r1.area(), 20)
 
-        def test_x_y(self):
-            """Method to test cases involving x, y coordinates"""
+    def test_x_y(self):
+        """Method to test cases involving x, y coordinates"""
 
-            yValErr = "y must be >= 0"
-            xValErr = "x must be >= 0"
-            xTypeErr = "x must be an integer"
-            yTypeErr = "y must be an integer"
+        yValErr = "y must be >= 0"
+        xValErr = "x must be >= 0"
+        xTypeErr = "x must be an integer"
+        yTypeErr = "y must be an integer"
 
-            with self.assertRaisesRegex(TypeError, xTypeErr):
-                r1 = Rectangle(3, 3, None, None)
+        with self.assertRaisesRegex(TypeError, xTypeErr):
+            r1 = Rectangle(3, 3, None, None)
 
-            with self.assertRaisesRegex(ValueError, xValErr):
-                r1 = Rectangle(3, 3, -1, 1)
+        with self.assertRaisesRegex(ValueError, xValErr):
+            r1 = Rectangle(3, 3, -1, 1)
 
-            with self.assertRaisesRegex(ValueError, yValErr):
-                r1 = Rectangle(3, 3, 1, -1)
+        with self.assertRaisesRegex(ValueError, yValErr):
+            r1 = Rectangle(3, 3, 1, -1)
 
-            with self.assertRaisesRegex(TypeError, yTypeErr):
-                r1 = Rectangle(3, 3, 3, None)
+        with self.assertRaisesRegex(TypeError, yTypeErr):
+            r1 = Rectangle(3, 3, 3, None)
 
-            with self.assertRaisesRegex(TypeError, xTypeErr):
-                r1 = Rectangle(3, 3, None, 3)
+        with self.assertRaisesRegex(TypeError, xTypeErr):
+            r1 = Rectangle(3, 3, None, 3)
 
         """
         with self.assertRaisesRegex(ValueError, wdTypeErr):

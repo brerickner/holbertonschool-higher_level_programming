@@ -17,6 +17,7 @@ class TestBaseClass(unittest.TestCase):
     def test_id_mult_objs(self):
         """Method that tests mult obj id's created
            with different data types."""
+
         b1 = Base()
         self.assertEqual(b1.id, 1)
 
@@ -39,6 +40,6 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(b7.id, 2)
 
     def test_one_id(self):
-        """Test instances using same obj only"""
+        """Method to test obj only"""
         obj = Base(-1)
         self.assertEqual(obj.id, -1)
