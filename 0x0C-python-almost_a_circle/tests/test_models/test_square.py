@@ -30,11 +30,11 @@ class TestSquareClass(unittest.TestCase):
         s2 = Square(2, 10)
         self.assertEqual(s2.id, 2)
 
-        r3 = Square(10, 2, 0, 12)
-        self.assertEqual(r3.id, 12)
+        s3 = Square(10, 2, 0, 12)
+        self.assertEqual(s3.id, 12)
 
-        r4 = Square(10, 2, 0, 0)
-        self.assertEqual(r4.id, 0)
+        s4 = Square(10, 2, 0, 0)
+        self.assertEqual(s4.id, 0)
 
     def test_simple_attr(self):
         """Method that tests for correct output of size, x, y"""
@@ -81,6 +81,21 @@ class TestSquareClass(unittest.TestCase):
         """Method to test area of Square"""
         s1 = Square(2)
         self.assertEqual(s1.area(), 4)
+
+    def test_str_method_sq(self):
+        """Method to test str representation of Square"""
+
+        s1 = Square(5)
+        self.assertEqual(str(s1), '[Square] (1) 0/0 - 5')
+
+        s2 = Square(3, 1)
+        self.assertEqual(str(s2), '[Square] (2) 1/0 - 3')
+
+        s3 = Square(8, 7, 6)
+        self.assertEqual(str(s3), '[Square] (3) 7/6 - 8')
+
+        s4 = Square(3, 3, 3, 3)
+        self.assertEqual(str(s4), '[Square] (3) 3/3 - 3')
 
     def test_args_kwargs(self):
         """Method to test positional keyword arguments of Square"""
@@ -160,6 +175,8 @@ class TestSquareClass(unittest.TestCase):
         self.assertIs(type(r2_dict), dict)
         self.assertNotEqual(s1, s2)
         self.assertIsNot(s1, s2)
+
+
 """
 
 *arg tests*
