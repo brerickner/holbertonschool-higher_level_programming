@@ -82,7 +82,84 @@ class TestSquareClass(unittest.TestCase):
         s1 = Square(2)
         self.assertEqual(s1.area(), 4)
 
+    def test_args_kwargs(self):
+        """Method to test positional keyword arguments of Square"""
 
+        s1 = Square(10)
+        self.assertEqual(str(s1), '[Square] (1) 0/0 - 10')
+
+        s1.update(10, 5)
+        self.assertEqual(str(s1), '[Square] (10) 0/0 - 5')
+
+        s1.update(14, 2, 3)
+        self.assertEqual(str(s1), '[Square] (14) 3/0 - 2')
+
+        s1.update(id=None)
+        self.assertEqual(str(s1), '[Square] (14) 3/0 - 2')
+
+        s1.update(x=12)
+        self.assertEqual(str(s1), '[Square] (14) 12/0 - 2')
+
+        s1.update(height=7, y=1)
+        self.assertEqual(str(s1), '[Square] (14) 12/1 - 2')
+
+        s1.update(y=1, size=9, x=1, id=6)
+        self.assertEqual(str(s1), '[Square] (6) 1/1 - 9')
+
+    def test_dict_repr(self):
+        """Method to test dict repr of a Square"""
+
+        s1 = Square(10, 2, 1)
+        s1_dict = s1.to_dictionary()
+        self.assertDictEqual(
+            s1_dict, {'id': 1, 'x': 2, 'y': 1, 'size': 10})
+
+    def test_dict_after_update(self):
+        """Method that tests dict repr after updating Square"""
+
+        s1 = Square(5, 5, 5, 5)
+        s1.update(1, 1)
+        s1_dict = s1.to_dictionary()
+        self.assertDictEqual(
+            s1_dict, {'id': 1, 'x': 5, 'y': 5, 'size': 1})
+
+    def test_instance_type(self):
+        """Method to test types of single Square obj"""
+        s1 = Square(10, 2, 1)
+        s1_dict = s1.to_dictionary()
+
+        self.assertIs(type(s1), Square)
+        self.assertIs(type(s1_dict), dict)
+
+    def test_instances_type(self):
+        """Method to test types when more than one instance"""
+        s1 = Square(10, 2, 1)
+        s1_dict = s1.to_dictionary()
+        s2 = Square(1, 1)
+        s2.update(**s1_dict)
+        s2_dict = s2.to_dictionary()
+
+        self.assertIs(type(s1), Square)
+        self.assertIs(type(s1_dict), dict)
+        self.assertIs(type(s2), Square)
+        self.assertIs(type(s1_dict), dict)
+        self.assertNotEqual(s1, s2)
+        self.assertIsNot(s1, s2)
+
+    def test_instances_four_args(self):
+        """Method to test instances type when 5 args given"""
+        s1 = Square(1, 2, 5, 6)
+        s1_dict = s1.to_dictionary()
+        s2 = Square(1, 1)
+        s2.update(**s1_dict)
+        r2_dict = s2.to_dictionary()
+
+        self.assertIs(type(s1), Square)
+        self.assertIs(type(s1_dict), dict)
+        self.assertIs(type(s2), Square)
+        self.assertIs(type(r2_dict), dict)
+        self.assertNotEqual(s1, s2)
+        self.assertIsNot(s1, s2)
 """
 
 *arg tests*
@@ -111,60 +188,31 @@ s1.update(size=7, id=89, y=1)
 [Square] (89) 12/1 - 7
 
 *dict tests*
-s1 = Square(10, 2, 1)
-s1_dictionary = s1.to_dictionary()
-
-def test_instances_five_args(self):
-        **Method to test instances type when 5 args given**
-        r1 = Square(1, 1, 2, 5, 6)
-        r1_dict = r1.to_dictionary()
-        r2 = Square(1, 1)
-        r2.update(**r1_dict)
-        r2_dict = r2.to_dictionary()
-        self.assertIs(type(r1), Square)
-        self.assertIs(type(r1_dict), dict)
-        self.assertIs(type(r2), Square)
-        self.assertIs(type(r2_dict), dict)
-        self.assertNotEqual(r1, r2)
-        self.assertIsNot(r1, r2)
-
-def test_instances_type(self):
-    *Method to test types when more than one instance*
-        r1 = S(10, 2, 1, 9)
-        r1_dict = r1.to_dictionary()
-        r2 = Square(1, 1)
-        r2.update(**r1_dict)
-        self.assertIs(type(r1), Square)
-        self.assertIs(type(r1_dict), dict)
-        self.assertIs(type(r2), Square)
-        self.assertIs(type(r1_dict), dict)
-        self.assertNotEqual(r1, r2)
-        self.assertIsNot(r1, r2)
 
 def test_dict_repr(self):
     **Method to test dict repr of a Square**
 
-        r1 = Square(, , , )
-        r1_dict = r1.to_dictionary()
-        self.assertDictEqual(
-            r1_dict, {'id': , 'x': , 'y': , 'size': })
+    s1 = Square(10, 2, 1)
+    s1_dict = s1.to_dictionary()
+    self.assertDictEqual(
+        s1_dict, {'id': 1, 'x': 2, 'y': 1, 'size': 10})
 
-        r2 = Square(, )
-        r2.update(**r1_dict)
-        r2_dict = r2.to_dictionary()
-        self.assertDictEqual(
-            r2_dict, {'id': , 'x': , 'height': , 'y': , 'width': })
+    s2 = Square(, )
+    s2.update(**s1_dict)
+    r2_dict = s2.to_dictionary()
+    self.assertDictEqual(
+        r2_dict, {'id': , 'x': , 'height': , 'y': , 'width': })
 
-        r2.update(, , , )
-        r2_dict = r2.to_dictionary()
+        s2.update(, , , )
+        r2_dict = s2.to_dictionary()
         self.assertDictEqual(
             r2_dict, {'id': 5, 'x': 5, 'size': 5, 'y': 5})
 
-        r1 = Square(, , , )
-        r1_dict = r1.to_dictionary()
-        r2 = Square(1, 1)
-        r2.update(**r1_dict)
-        r2_dict = r2.to_dictionary()
+        s1 = Square(, , , )
+        s1_dict = s1.to_dictionary()
+        s2 = Square(1, 1)
+        s2.update(**s1_dict)
+        r2_dict = s2.to_dictionary()
         self.assertDictEqual(
             r2_dict, {'id': , 'x': , 'y': , 'size':})
 
