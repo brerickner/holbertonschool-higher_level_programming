@@ -172,17 +172,61 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, wdTypeErr):
             r1.update(y=1, width=None, x=1, id=-89, height=9)
 
-        def test_pep8_rec(self):
-            pep8style = pep8.StyleGuide(quiet=True)
-            result = pep8style.check_files(
-                ['models/base.py', 'models/rectangle.py',
+    """def test_pep8_rec(self):
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(
+            ['models/base.py', 'models/rectangle.py',
                 'tests/test_models/test_rectangle.py',
                 'tests/test_models/test_base.py'])
-            self.assertEqual(result.total_errors, 0, "Needs pepfixed")
-        """
-        def test_dict_repr(self):
-            """Method to test dict repr of a Rectangle"""
+        self.assertEqual(result.total_errors, 0, "Needs pepfixed")"""
 
-            r1 = Rectangle(10, 2, 1, 9)
-            r1_dictionary = r1.to_dictionary()
-        """
+    def test_dict_repr(self):
+        """Method to test dict repr of a Rectangle"""
+
+        r1 = Rectangle(10, 2, 1, 9)
+        r1_dict = r1.to_dictionary()
+        self.assertDictEqual(
+            r1_dict,
+            {'id': 1,
+             'x': 1,
+             'height': 2,
+             'y': 9,
+             'width': 10})
+
+        r2 = Rectangle(1, 1)
+        r2.update(**r1_dict)
+        r2_dict = r2.to_dictionary
+        self.assertDictEqual(
+            r2_dict,
+            {'id': 1,
+             'x': 1,
+             'height': 2,
+             'y': 9,
+             'width': 10})
+
+        r2.update(5, 5, 5, 5, 5)
+        r2_dict = r2.to_dictionary
+        self.assertDictEqual(
+            r2_dict,
+            {'id': 5,
+             'x': 5,
+             'height': 5,
+             'y': 5,
+             'width': 5})
+
+    """
+    *Ask russ about error thrown*
+    def test_dict_type(self):
+        """Method to test dict type"""
+        r1 = Rectangle(1, 1, 2, 5, 6)
+        r1_dict = r1.to_dictionary()
+        r2 = Rectangle(1, 1)
+        r2.update(**r1_dict)
+        r2_dict = r2.to_dictionary()
+        self.assertDictEqual(
+            r2_dict,
+            {'id': 6,
+             'x': 2,
+             'height': 1,
+             'y': 5,
+             'width': 1})
