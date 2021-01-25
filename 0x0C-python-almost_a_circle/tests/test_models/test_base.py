@@ -2,6 +2,7 @@
 """Module with unittest methods for base.py"""
 
 import unittest
+import pep8
 from models.base import Base
 
 
@@ -13,6 +14,12 @@ class TestBaseClass(unittest.TestCase):
         """Method to assigning superclass private variable
            equal to zero before beginning testing"""
         Base._Base__nb_objects = 0
+
+    def test_pep8_rec(self):
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(
+            ['models/base.py', 'tests/test_models/test_base.py'])
+        self.assertEqual(result.total_errors, 0, "pepfix Base")
 
     def test_id_mult_objs(self):
         """Method that tests mult obj id's created

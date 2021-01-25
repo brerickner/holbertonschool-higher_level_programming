@@ -2,9 +2,9 @@
 """Module with unittest methods for square.py"""
 
 import unittest
+import pep8
 from models.base import Base
 from models.square import Square
-
 
 
 class TestSquareClass(unittest.TestCase):
@@ -15,6 +15,12 @@ class TestSquareClass(unittest.TestCase):
         """Method to assigning superclass private variable
            equal to zero before beginning testing"""
         Base._Base__nb_objects = 0
+
+    def test_pep8_rec(self):
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(
+            ['models/square.py', 'tests/test_models/test_square.py'])
+        self.assertEqual(result.total_errors, 0, "Pepfix Square")
 
     def test_square_id(self):
         """Method to test the id of Square"""
@@ -33,15 +39,10 @@ class TestSquareClass(unittest.TestCase):
     def test_simple_attr(self):
         """Method that tests for correct output of size, x, y"""
         s1 = Square(5)
-        self.assertEqual(str(s1),'[Square] (1) 0/0 - 5')
-        
-        s1 = Square(10)
-        self.assertEqual(str(s1),'[Square] (2) 0/0 - 10')
+        self.assertEqual(str(s1), '[Square] (1) 0/0 - 5')
 
-    
-    """
-        
-    """
+        s1 = Square(10)
+        self.assertEqual(str(s1), '[Square] (2) 0/0 - 10')
 
     def test_square_attr_raises(self):
         """Method to raise exceptions for width/height"""
@@ -51,7 +52,6 @@ class TestSquareClass(unittest.TestCase):
         xValErr = "x must be >= 0"
         xTypeErr = "x must be an integer"
         yTypeErr = "y must be an integer"
-       
 
         with self.assertRaisesRegex(ValueError, wdValErr):
             s1 = Square(-2, 2)
@@ -78,14 +78,14 @@ class TestSquareClass(unittest.TestCase):
             s1 = Square('x', 3)
 
     def test_sq_area_rec(self):
-        """Method to test area of Rectangle"""
+        """Method to test area of Square"""
         s1 = Square(2)
         self.assertEqual(s1.area(), 4)
-    
-    
-"""
-  
 
+
+"""
+
+*arg tests*
 s1 = Square(5)
 [Square] (1) 0/0 - 5
 
@@ -110,10 +110,63 @@ s1.update(size=7, y=1)
 s1.update(size=7, id=89, y=1)
 [Square] (89) 12/1 - 7
 
+*dict tests*
+s1 = Square(10, 2, 1)
+s1_dictionary = s1.to_dictionary()
+
+def test_instances_five_args(self):
+        **Method to test instances type when 5 args given**
+        r1 = Square(1, 1, 2, 5, 6)
+        r1_dict = r1.to_dictionary()
+        r2 = Square(1, 1)
+        r2.update(**r1_dict)
+        r2_dict = r2.to_dictionary()
+        self.assertIs(type(r1), Square)
+        self.assertIs(type(r1_dict), dict)
+        self.assertIs(type(r2), Square)
+        self.assertIs(type(r2_dict), dict)
+        self.assertNotEqual(r1, r2)
+        self.assertIsNot(r1, r2)
+
+def test_instances_type(self):
+    *Method to test types when more than one instance*
+        r1 = S(10, 2, 1, 9)
+        r1_dict = r1.to_dictionary()
+        r2 = Square(1, 1)
+        r2.update(**r1_dict)
+        self.assertIs(type(r1), Square)
+        self.assertIs(type(r1_dict), dict)
+        self.assertIs(type(r2), Square)
+        self.assertIs(type(r1_dict), dict)
+        self.assertNotEqual(r1, r2)
+        self.assertIsNot(r1, r2)
+
+def test_dict_repr(self):
+    **Method to test dict repr of a Square**
+
+        r1 = Square(, , , )
+        r1_dict = r1.to_dictionary()
+        self.assertDictEqual(
+            r1_dict, {'id': , 'x': , 'y': , 'size': })
+
+        r2 = Square(, )
+        r2.update(**r1_dict)
+        r2_dict = r2.to_dictionary()
+        self.assertDictEqual(
+            r2_dict, {'id': , 'x': , 'height': , 'y': , 'width': })
+
+        r2.update(, , , )
+        r2_dict = r2.to_dictionary()
+        self.assertDictEqual(
+            r2_dict, {'id': 5, 'x': 5, 'size': 5, 'y': 5})
+
+        r1 = Square(, , , )
+        r1_dict = r1.to_dictionary()
+        r2 = Square(1, 1)
+        r2.update(**r1_dict)
+        r2_dict = r2.to_dictionary()
+        self.assertDictEqual(
+            r2_dict, {'id': , 'x': , 'y': , 'size':})
 
 
-
-
-s1.size = "9"
-[TypeError] width must be an integer
 """
