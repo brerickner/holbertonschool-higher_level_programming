@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module with unittest methods for base.py"""
+"""Module with unittest methods for rectangle.py"""
 
 import unittest
 import pep8
