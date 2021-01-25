@@ -179,3 +179,10 @@ class TestRectangleClass(unittest.TestCase):
                 'tests/test_models/test_rectangle.py',
                 'tests/test_models/test_base.py'])
             self.assertEqual(result.total_errors, 0, "Needs pepfixed")
+        """
+        def test_dict_repr(self):
+            """Method to test dict repr of a Rectangle"""
+
+            r1 = Rectangle(10, 2, 1, 9)
+            r1_dictionary = r1.to_dictionary()
+        """

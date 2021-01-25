@@ -131,3 +131,7 @@ class Rectangle(Base):
                     setattr(self, 'id', self.id)
                 else:
                     setattr(self, key, value)
+    
+    def to_dictionary(self):
+        """Method to return the dict repr of Rectangle"""
+        return self.__dict__
