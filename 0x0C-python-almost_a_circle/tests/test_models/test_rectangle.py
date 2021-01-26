@@ -16,13 +16,12 @@ class TestRectangleClass(unittest.TestCase):
            equal to zero before beginning testing"""
         Base._Base__nb_objects = 0
 
-    
     def test_pep8_rec(self):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(
             ['models/rectangle.py', 'tests/test_models/test_rectangle.py'])
         self.assertEqual(result.total_errors, 0, "pepfix rectangle")
-    
+
     def test_rectangle_id(self):
         """Method to test the id of Rectangle"""
         r1 = Rectangle(10, 2)
@@ -213,7 +212,7 @@ class TestRectangleClass(unittest.TestCase):
         self.assertIs(type(r1), Rectangle)
         self.assertIs(type(r1_dict), dict)
 
-
+    def test_instances_type(self):
         """Method to test types when more than one instance"""
         r1 = Rectangle(10, 2, 1, 9)
         r1_dict = r1.to_dictionary()

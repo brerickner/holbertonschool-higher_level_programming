@@ -3,7 +3,9 @@
 
 import unittest
 import pep8
+import json
 from models.base import Base
+from models.rectangle import Rectangle
 
 
 class TestBaseClass(unittest.TestCase):
@@ -50,6 +52,41 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(b8.id, 0)
 
     def test_one_id(self):
-        """Method to test obj only"""
+        """Method to test one obj only"""
         obj = Base(-1)
         self.assertEqual(obj.id, -1)
+
+        obj = Base(8)
+        self.assertEqual(obj.id, 8)
+
+        obj = Base(None)
+        self.assertEqual(obj.id, 1)
+
+    def test_to_json(self):
+        """Method to test JSON str representation of a dict"""
+        r1_dict = {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8}
+        json_str = Base.to_json_string(r1_dict)
+        test_dict = json.loads(json_str)
+
+        self.assertEqual(test_dict, r1_dict)
+        self.assertIs(type(json_str), str)
+        self.assertIs(type(test_dict), dict)
+
+    def test_to_json_with_to_dict(self):
+        """Method to test JSON str representation of list_dictionaries"""
+        r1 = Rectangle(10, 7, 2, 8)
+        dictionary = r1.to_dictionary()
+        json_str = Base.to_json_string([dictionary])
+        test_jdict = json.loads(Base.to_json_string(dictionary))
+        self.assertDictEqual(
+            dictionary,
+            {'width': 10,
+             'y': 8,
+             'x': 2,
+             'id': 1,
+             'height': 7})
+
+        self.assertIs(type(dictionary), dict)
+        self.assertIs(type(json_str), str)
+        self.assertEqual(Base.to_json_string([]), '[]')
+        self.assertEqual(Base.to_json_string(None), '[]')

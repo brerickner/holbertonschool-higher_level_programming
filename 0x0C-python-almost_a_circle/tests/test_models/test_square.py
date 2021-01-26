@@ -176,62 +176,6 @@ class TestSquareClass(unittest.TestCase):
         self.assertNotEqual(s1, s2)
         self.assertIsNot(s1, s2)
 
-
 """
-
-*arg tests*
-s1 = Square(5)
-[Square] (1) 0/0 - 5
-
-s1 = Square(10)
-[Square] (10) 0/0 - 5
-
-s1 = Square(1, 2)
-[Square] (1) 0/0 - 2
-
-s1.update(1, 2, 3)
-[Square] (1) 0/0 - 2
-
-s1.update(1, 2, 3, 4)
-[Square] (1) 4/0 - 2
-
-s1.update(x=12)
-[Square] (1) 12/0 - 2
-
-s1.update(size=7, y=1)
-[Square] (1) 12/1 - 7
-
-s1.update(size=7, id=89, y=1)
-[Square] (89) 12/1 - 7
-
-*dict tests*
-
-def test_dict_repr(self):
-    **Method to test dict repr of a Square**
-
-    s1 = Square(10, 2, 1)
-    s1_dict = s1.to_dictionary()
-    self.assertDictEqual(
-        s1_dict, {'id': 1, 'x': 2, 'y': 1, 'size': 10})
-
-    s2 = Square(, )
-    s2.update(**s1_dict)
-    r2_dict = s2.to_dictionary()
-    self.assertDictEqual(
-        r2_dict, {'id': , 'x': , 'height': , 'y': , 'width': })
-
-        s2.update(, , , )
-        r2_dict = s2.to_dictionary()
-        self.assertDictEqual(
-            r2_dict, {'id': 5, 'x': 5, 'size': 5, 'y': 5})
-
-        s1 = Square(, , , )
-        s1_dict = s1.to_dictionary()
-        s2 = Square(1, 1)
-        s2.update(**s1_dict)
-        r2_dict = s2.to_dictionary()
-        self.assertDictEqual(
-            r2_dict, {'id': , 'x': , 'y': , 'size':})
-
 
 """
