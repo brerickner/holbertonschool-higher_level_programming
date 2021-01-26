@@ -16,7 +16,7 @@ class Square(Rectangle):
                 y = y coordinates
                 id = new square id
             """
-        super().__init__(width=size, height=size, x=x, y=y, id=id)
+        super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
@@ -45,7 +45,7 @@ class Square(Rectangle):
     def update(self, *args, **kwargs):
         """Method to assign argument to each attribute"""
         if len(args) != 0:
-            argList = ["id", "width", "height", "x", "y"]
+            argList = ["id", "size", "x", "y"]
 
             for index, arg in enumerate(args):
                 setattr(self, argList[index], args[index])
@@ -59,4 +59,9 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         """Method to return dictionary representation of Square"""
-        return self.__dict__
+        return {
+            'id': self.id,
+            'size': self.size,
+            'x': self.x,
+            'y': self.y
+        }
