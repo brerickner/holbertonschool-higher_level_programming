@@ -38,21 +38,46 @@ class Base:
     def save_to_file(cls, list_objs):
         """Method that writes JSON str repr of list_obj to a file"""
         filename = cls.__name__ + ".json"
-        jString = ""
+        jList = []
         with open(filename, "w", encoding="utf-8") as f:
             for obj in list_objs:
                 if list_objs is None:
                     f.write("[]")
                 else:
-                    objDict = obj.to_dictionary()
-                    jString += Base.to_json_string(objDict)
+                    jList.append(obj.to_dictionary())
+            jString = Base.to_json_string(jList)
             f.write(jString)
 
-    """
-    NEED TO WRITE TESTS FOR SAVE TO FILE FIRST
     @staticmethod
     def from_json_string(json_string):
-        """Method to return list of JSON string repr json_string"""
-    """ 
+        """Method to return list of JSON string repr json_string.
+            Returns:
+                Empty list when json_string is none.
+                Else list represented by json_string
+            """
+        if json_string is None:
+            return "[]"
+        else:
+            return json.loads(json_string)
 
-                
+    @classmethod
+    def create(cls, **dictionary):
+        """Method to return an instance with all attributes already set
+            Return:
+                instance with all attributes set already
+            """
+        if cls.__name__ == "Square":
+            dummy = cls(6)
+        if cls.__name__ == "Rectangle":
+            dummy = cls(6, 6)
+        dummy.update(**dictionary)
+        return dummy
+
+    """
+    def load_from_file(cls):
+        *Method to return a list of instances.
+            Return:
+                An empty list if file doesn't exist. Else list of instances
+            *
+            filename = cls.__name__ + .json
+    """
