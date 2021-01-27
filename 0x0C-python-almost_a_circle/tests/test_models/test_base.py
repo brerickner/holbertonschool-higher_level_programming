@@ -25,6 +25,12 @@ class TestBaseClass(unittest.TestCase):
             ['models/base.py', 'tests/test_models/test_base.py'])
         self.assertEqual(result.total_errors, 0, "pepfix Base")
 
+    def test_if_var_private(self):
+        """Method to test if __nb_instances is private"""
+        errB = "'Base' object has no attribute '_TestBaseClass__nb_instances'"
+        with self.assertRaisesRegex(AttributeError, errB):
+            b1 = Base().__nb_instances
+
     def test_id_mult_objs(self):
         """Method that tests mult obj id's created
            with different data types."""
@@ -35,8 +41,8 @@ class TestBaseClass(unittest.TestCase):
         b2 = Base(-1)
         self.assertEqual(b2.id, -1)
 
-        b3 = Base("")
-        self.assertEqual(b3.id, "")
+        b3 = Base()
+        self.assertEqual(b3.id, 2)
 
         b4 = Base(12)
         self.assertEqual(b4.id, 12)
@@ -48,10 +54,14 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(b6.id, "6.26")
 
         b7 = Base(None)
-        self.assertEqual(b7.id, 2)
+        self.assertEqual(b7.id, 3)
 
         b8 = Base(0)
         self.assertEqual(b8.id, 0)
+
+        b9 = Base(99)
+        b9.id = 15
+        self.assertEqual(b9.id, 15)
 
     def test_one_id(self):
         """Method to test one obj only"""
@@ -152,5 +162,5 @@ class TestBaseClass(unittest.TestCase):
         r2 = Rectangle(2, 4)
         Rectangle.save_to_file([r1, r2])
         testOut = Rectangle.load_from_file()
-        self.assertEqual(str, str(test))
+        self.assertEqual(str(testOut), str(test))
         """

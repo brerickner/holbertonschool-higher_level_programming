@@ -56,6 +56,9 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, htValErr):
             r1 = Rectangle(7, -1)
 
+        with self.assertRaisesRegex(ValueError, htValErr):
+            r1 = Rectangle(7, 0)
+
         with self.assertRaisesRegex(TypeError, wdTypeErr):
             r1 = Rectangle(None, None)
 
@@ -76,11 +79,6 @@ class TestRectangleClass(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, wdValErr):
             r2 = Rectangle(-5, 5, 1)
-
-    def test_area_rec(self):
-        """Method to test area of Rectangle"""
-        r1 = Rectangle(2, 10)
-        self.assertEqual(r1.area(), 20)
 
     def test_x_y_raises(self):
         """Method to test cases involving x, y coordinates"""
@@ -104,6 +102,23 @@ class TestRectangleClass(unittest.TestCase):
 
         with self.assertRaisesRegex(TypeError, xTypeErr):
             r1 = Rectangle(3, 3, None, 3)
+
+    def test_rec_attrs(self):
+        """Method to test width and height of a Rectangle"""
+        r1 = Rectangle(8, 8, 8, 8, 6)
+        self.assertEqual(r1.width, 8)
+        self.assertEqual(r1.height, 8)
+        self.assertEqual(r1.x, 8)
+        self.assertEqual(r1.y, 8)
+        self.assertEqual(r1.id, 6)
+
+    def test_area_rec(self):
+        """Method to test area of Rectangle"""
+        r1 = Rectangle(2, 10)
+        self.assertEqual(r1.area(), 20)
+
+        r1 = Rectangle(2, 2, 2, 2, 2)
+        self.assertEqual(r1.area(), 4)
 
     def test_str_method(self):
         """Method to test str representation of Rectangle"""
@@ -212,6 +227,7 @@ class TestRectangleClass(unittest.TestCase):
         r1_dict = r1.to_dictionary()
         self.assertIs(type(r1), Rectangle)
         self.assertIs(type(r1_dict), dict)
+        self.assertIsInstance(Rectangle(10, 2, 1, 9), Base)
 
     def test_instances_type(self):
         """Method to test types when more than one instance"""

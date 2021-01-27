@@ -5,6 +5,7 @@ import unittest
 import pep8
 from models.base import Base
 from models.square import Square
+from models.rectangle import Rectangle
 
 
 class TestSquareClass(unittest.TestCase):
@@ -39,6 +40,14 @@ class TestSquareClass(unittest.TestCase):
 
     def test_simple_attr(self):
         """Method that tests for correct output of size, x, y"""
+        s1 = Square(6, 6, 6, 66)
+        self.assertEqual(s1.size, 6)
+        self.assertEqual(s1.width, 6)
+        self.assertEqual(s1.height, 6)
+        self.assertEqual(s1.x, 6)
+        self.assertEqual(s1.y, 6)
+        self.assertEqual(s1.id, 66)
+
         s1 = Square(5)
         self.assertEqual(str(s1), '[Square] (1) 0/0 - 5')
 
@@ -83,11 +92,14 @@ class TestSquareClass(unittest.TestCase):
         s1 = Square(2)
         self.assertEqual(s1.area(), 4)
 
+        s1 = Square(2, 2, 2, 66)
+        self.assertEqual(s1.area(), 4)
+
     def test_str_method_sq(self):
         """Method to test str representation of Square"""
 
         s1 = Square(5)
-        self.assertEqual(str(s1), '[Square] (1) 0/0 - 5')
+        self.assertEqual(Square.__str__(s1), '[Square] (1) 0/0 - 5')
 
         s2 = Square(3, 1)
         self.assertEqual(str(s2), '[Square] (2) 1/0 - 3')
@@ -146,6 +158,8 @@ class TestSquareClass(unittest.TestCase):
 
         self.assertIs(type(s1), Square)
         self.assertIs(type(s1_dict), dict)
+        self.assertIsInstance(Square(10, 2, 1), Base)
+        self.assertIsInstance(Square(10, 2, 1), Rectangle)
 
     def test_instances_type(self):
         """Method to test types when more than one instance"""
@@ -176,7 +190,3 @@ class TestSquareClass(unittest.TestCase):
         self.assertIs(type(r2_dict), dict)
         self.assertNotEqual(s1, s2)
         self.assertIsNot(s1, s2)
-
-"""
-
-"""
