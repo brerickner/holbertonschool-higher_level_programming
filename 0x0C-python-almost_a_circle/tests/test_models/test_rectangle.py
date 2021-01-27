@@ -205,7 +205,7 @@ class TestRectangleClass(unittest.TestCase):
 
         r1 = Rectangle(2, 3, 0, 0)
         meow = "##\n##\n##\n"
-        # meow = r1.display()
+        r1.display()
         assert re.match(r'^##\n##\n##\n$', meow)
 
         r1 = Rectangle(2, 3, 3, 0)
