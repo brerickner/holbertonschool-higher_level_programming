@@ -57,7 +57,7 @@ class Base:
                 Else list represented by json_string
             """
         if json_string is None:
-            return "[]"
+            return []
         else:
             return json.loads(json_string)
 
