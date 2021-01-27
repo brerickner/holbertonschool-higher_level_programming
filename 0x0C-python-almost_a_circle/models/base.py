@@ -73,11 +73,16 @@ class Base:
         dummy.update(**dictionary)
         return dummy
 
-    """
-    def load_from_file(cls):
+    """def load_from_file(cls):
         *Method to return a list of instances.
             Return:
                 An empty list if file doesn't exist. Else list of instances
             *
-            filename = cls.__name__ + .json
-    """
+        filename = cls.__name__ + ".json"
+        instList =[]
+
+        if path.exists(filename) == False:
+            return instList
+        if path.exists(filename):
+            with open(filename, "r", encoding="utf-8") as f
+            """

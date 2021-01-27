@@ -64,6 +64,12 @@ class TestBaseClass(unittest.TestCase):
         obj = Base(None)
         self.assertEqual(obj.id, 1)
 
+        b1 = Base(float("nan"))
+        self.assertIsNot(b1.id, float("nan"))
+
+        b1 = Base('inf')
+        self.assertIsNot(b1.id, float("nan"))
+
     def test_to_json(self):
         """Method to test JSON str representation of a dict"""
         r1_dict = {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8}
@@ -139,3 +145,12 @@ class TestBaseClass(unittest.TestCase):
             'width': 7}
         bens_test = Rectangle.create(**better_dictionary)
         self.assertEqual(str(bens_test), '[Rectangle] (4) 5/4 - 7/4')
+
+    """def test_load_file(self):
+        Module to test that Rectangles and Squares load from a file
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+        testOut = Rectangle.load_from_file()
+        self.assertEqual(str, str(test))
+        """
