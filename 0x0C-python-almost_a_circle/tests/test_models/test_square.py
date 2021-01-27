@@ -26,6 +26,7 @@ class TestSquareClass(unittest.TestCase):
 
     def test_square_id(self):
         """Method to test the id of Square"""
+
         s1 = Square(10, 2)
         self.assertEqual(s1.id, 1)
 
@@ -86,6 +87,9 @@ class TestSquareClass(unittest.TestCase):
 
         with self.assertRaisesRegex(TypeError, wdTypeErr):
             s1 = Square('x', 3)
+
+        with self.assertRaisesRegex(ValueError, wdValErr):
+            s1 = Square(0)
 
     def test_sq_area_rec(self):
         """Method to test area of Square"""
