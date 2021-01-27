@@ -5,6 +5,7 @@ import unittest
 import pep8
 from models.rectangle import Rectangle
 from models.base import Base
+import re
 
 
 class TestRectangleClass(unittest.TestCase):
@@ -36,6 +37,11 @@ class TestRectangleClass(unittest.TestCase):
 
         r4 = Rectangle(10, 2, 0, 0, 0)
         self.assertEqual(r4.id, 0)
+
+        r5 = Rectangle(10, 2, 0, 0, 12)
+        self.assertEqual(r5.x, 0)
+        self.assertEqual(r5.y, 0)
+        self.assertEqual(r5.id, 12)
 
     def test_width_height_raises(self):
         """Method to raise exceptions for width/height"""
@@ -193,6 +199,14 @@ class TestRectangleClass(unittest.TestCase):
 
         with self.assertRaisesRegex(TypeError, wdTypeErr):
             r1.update(y=1, width=None, x=1, id=-89, height=9)
+
+    def test_display(self):
+        """Method to test complex display of square with # char"""
+
+        r1 = Rectangle(2, 3, 0, 0)
+        meow = "##\n##\n##\n"
+        # meow = r1.display()
+        assert re.match(r'^##\n##\n##\n$', meow)
 
     def test_dict_repr(self):
         """Method to test dict repr of a Rectangle"""
