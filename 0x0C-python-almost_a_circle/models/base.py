@@ -2,6 +2,7 @@
 """This module contains the Base class"""
 
 import json
+from os import path
 
 
 class Base:
@@ -73,16 +74,21 @@ class Base:
         dummy.update(**dictionary)
         return dummy
 
-    """def load_from_file(cls):
-        *Method to return a list of instances.
+    @classmethod
+    def load_from_file(cls):
+        """Method to return a list of instances.
             Return:
                 An empty list if file doesn't exist. Else list of instances
-            *
+            """
         filename = cls.__name__ + ".json"
-        instList =[]
+        instList = []
 
-        if path.exists(filename) == False:
+        if path.exists(filename) is False:
             return instList
         if path.exists(filename):
-            with open(filename, "r", encoding="utf-8") as f
-            """
+            with open(filename, "r", encoding="utf-8") as f:
+                fromFile = f.read()
+            dictList = cls.from_json_string(fromFile)
+            for dict in dictList:
+                instList.append(cls.create(**dict))
+        return instList
