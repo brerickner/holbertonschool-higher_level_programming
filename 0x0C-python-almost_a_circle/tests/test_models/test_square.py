@@ -55,6 +55,9 @@ class TestSquareClass(unittest.TestCase):
         s1 = Square(10)
         self.assertEqual(str(s1), '[Square] (2) 0/0 - 10')
 
+    def test_display(self):
+        pass
+
     def test_square_attr_raises(self):
         """Method to raise exceptions for width/height"""
         wdValErr = "width must be > 0"
