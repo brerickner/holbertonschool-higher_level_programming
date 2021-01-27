@@ -40,14 +40,15 @@ class Base:
         """Method that writes JSON str repr of list_obj to a file"""
         filename = cls.__name__ + ".json"
         jList = []
-        with open(filename, "w", encoding="utf-8") as f:
-            for obj in list_objs:
-                if list_objs is None:
-                    f.write("[]")
-                else:
-                    jList.append(obj.to_dictionary())
-            jString = Base.to_json_string(jList)
-            f.write(jString)
+        if list_objs is not None:
+            with open(filename, "w", encoding="utf-8") as f:
+                for obj in list_objs:
+                    if list_objs is None:
+                        f.write("[]")
+                    else:
+                        jList.append(cls.to_dictionary(obj))
+                jString = cls.to_json_string(jList)
+                f.write(jString)
 
     @staticmethod
     def from_json_string(json_string):
@@ -57,7 +58,7 @@ class Base:
                 Else list represented by json_string
             """
         if json_string is None:
-            return []
+            return "[]"
         else:
             return json.loads(json_string)
 
