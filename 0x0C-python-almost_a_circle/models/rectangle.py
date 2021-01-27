@@ -36,10 +36,10 @@ class Rectangle(Base):
             """
         if isinstance(value, int) is False:
             raise TypeError("width must be an integer")
-        if value < 1:
+        if value <= 0:
             raise ValueError("width must be > 0 ")
-
-        self.__width = value
+        else:
+            self.__width = value
 
     @property
     def height(self):
@@ -54,9 +54,10 @@ class Rectangle(Base):
             """
         if isinstance(value, int) is False:
             raise TypeError("height must be an integer")
-        if value < 1:
+        if value <= 0:
             raise ValueError("height must be > 0 ")
-        self.__height = value
+        else:
+            self.__height = value
 
     @property
     def x(self):
@@ -73,7 +74,8 @@ class Rectangle(Base):
             raise TypeError("x must be an integer")
         if value < 0:
             raise ValueError("x must be >= 0")
-        self.__x = value
+        else:
+            self.__x = value
 
     @property
     def y(self):
@@ -90,7 +92,8 @@ class Rectangle(Base):
             raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
-        self.__y = value
+        else:
+            self.__y = value
 
     def area(self):
         """Method that gives area of Rectangle.
