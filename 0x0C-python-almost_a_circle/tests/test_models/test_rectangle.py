@@ -208,6 +208,10 @@ class TestRectangleClass(unittest.TestCase):
         # meow = r1.display()
         assert re.match(r'^##\n##\n##\n$', meow)
 
+        r1 = Rectangle(2, 3, 3, 0)
+        meow = "   ##\n   ##\n   ##\n"
+        assert re.match(r'^   ##\n   ##\n   ##\n$', meow)
+
     def test_dict_repr(self):
         """Method to test dict repr of a Rectangle"""
 
