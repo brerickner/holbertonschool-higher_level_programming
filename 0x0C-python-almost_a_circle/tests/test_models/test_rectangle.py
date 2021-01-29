@@ -233,6 +233,20 @@ class TestRectangleClass(unittest.TestCase):
             r1.display()
         self.assertTrue("##\n##\n##\n" in outputStr.getvalue())
 
+        r2 = Rectangle(3, 2)
+        r2.display()
+        outputStr = io.StringIO()
+        with contextlib.redirect_stdout(outputStr):
+            r2.display()
+        self.assertTrue("###\n###\n" in outputStr.getvalue())
+
+        r2 = Rectangle(3, 2, 2)
+        r2.display()
+        outputStr = io.StringIO()
+        with contextlib.redirect_stdout(outputStr):
+            r2.display()
+        self.assertTrue("  ###\n  ###\n" in outputStr.getvalue())
+
     def test_dict_repr(self):
         """Method to test dict repr of a Rectangle"""
 
