@@ -200,7 +200,7 @@ class TestBaseClass(unittest.TestCase):
 
         Square.save_to_file([])
         with open("Square.json", encoding="utf-8") as f:
-            self.assertEqual(len(f.read()), 2)
+            self.assertEqual(f.read(), "[]")
 
         Square.save_to_file([Square(1)])
         with open("Square.json", encoding="utf-8") as f:
