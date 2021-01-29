@@ -224,13 +224,13 @@ class TestRectangleClass(unittest.TestCase):
         """output = sys.stdout
         r1 = Rectangle(3,2, 0, 0)
         """
-        tempOut = sys.stdout
+
         r1 = Rectangle(2, 3, x=0, y=0)
         outputStr = io.StringIO()
         with contextlib.redirect_stdout(outputStr):
             r1.display()
-        self.assertTrue("##\n##\n##\n" in outputStr.getvalue())
-        sys.stdout = tempOut
+        self.assertEqual("##\n##\n##\n", outputStr.getvalue())
+
         """
         self.assertEqual(r1.display(), meow)
         suite = unittest.TestLoader().loadTestsFromModule(__Rectangle__)
@@ -239,54 +239,42 @@ class TestRectangleClass(unittest.TestCase):
                 unittest.TextTestRunner(stream=buf).run(suite)
         """
 
-        tempOut = sys.stdout
         r1 = Rectangle(2, 3, 1, 1)
         meow = "\n ##\n ##\n ##\n"
         outputStr = io.StringIO()
         with contextlib.redirect_stdout(outputStr):
             r1.display()
-        self.assertTrue("\n ##\n ##\n ##\n" in outputStr.getvalue())
-        sys.stdout = tempOut
+        self.assertEqual("\n ##\n ##\n ##\n", outputStr.getvalue())
 
-        tempOut = sys.stdout
         r2 = Rectangle(3, 2)
         outputStr = io.StringIO()
         with contextlib.redirect_stdout(outputStr):
             r2.display()
-        self.assertTrue("###\n###\n" in outputStr.getvalue())
-        sys.stdout = tempOut
+        self.assertEqual("###\n###\n", outputStr.getvalue())
 
-        tempOut = sys.stdout
         r2 = Rectangle(3, 2, 2)
         outputStr = io.StringIO()
         with contextlib.redirect_stdout(outputStr):
             r2.display()
-        self.assertTrue("  ###\n  ###\n" in outputStr.getvalue())
-        sys.stdout = tempOut
+        self.assertEqual("  ###\n  ###\n", outputStr.getvalue())
 
-        tempOut = sys.stdout
         r2 = Rectangle(3, 2, 2, 0)
         outputStr = io.StringIO()
         with contextlib.redirect_stdout(outputStr):
             r2.display()
-        self.assertTrue("  ###\n  ###\n" in outputStr.getvalue())
-        sys.stdout = tempOut
+        self.assertEqual("  ###\n  ###\n", outputStr.getvalue())
 
-        tempOut = sys.stdout
         r2 = Rectangle(3, 2, 0, 1, 1)
         outputStr = io.StringIO()
         with contextlib.redirect_stdout(outputStr):
             r2.display()
-        self.assertTrue("\n###\n###\n" in outputStr.getvalue())
-        sys.stdout = tempOut
+        self.assertEqual("\n###\n###\n", outputStr.getvalue())
 
-        tempOut = sys.stdout
         r2 = Rectangle(3, 2, 0, 0, 1)
         outputStr = io.StringIO()
         with contextlib.redirect_stdout(outputStr):
             r2.display()
-        self.assertTrue("###\n###\n" in outputStr.getvalue())
-        sys.stdout = tempOut
+        self.assertEqual("###\n###\n", outputStr.getvalue())
 
     def test_dict_repr(self):
         """Method to test dict repr of a Rectangle"""
