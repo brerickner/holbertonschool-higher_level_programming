@@ -245,7 +245,6 @@ class TestRectangleClass(unittest.TestCase):
         self.assertTrue("\n ##\n ##\n ##\n" in outputStr.getvalue())
 
         r2 = Rectangle(3, 2)
-        r2.display()
         outputStr = io.StringIO()
         with contextlib.redirect_stdout(outputStr):
             r2.display()
