@@ -191,9 +191,25 @@ class TestBaseClass(unittest.TestCase):
         """
 
     def test_to_save_sq(self):
-        """Method to test files saved as squares"""
+        """Method to test files saved as squares for success and raises"""
         if os.path.exists("Square.json"):
             os.remove("Square.json")
 
         with self.assertRaises(TypeError):
+            Square.save_to_file()
+
+        Square.save_to_file([])
+        with open("Square.json", encoding="utf-8") as f:
+            self.assertEqual(len(f.read()), 2)
+
+    def test_save_to_rect(self):
+        """Method to test if files saved for rectangles"""
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+
+        with self.assertRaises(TypeError):
             Rectangle.save_to_file()
+
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", encoding="utf-8") as f:
+            self.assertEqual(len(f.read()), 2)
