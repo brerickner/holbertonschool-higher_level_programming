@@ -198,6 +198,9 @@ class TestBaseClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             Square.save_to_file()
 
+        with self.assertRaises(TypeError):
+            Square.save_to_file([], 1)
+
         Square.save_to_file([])
         with open("Square.json", encoding="utf-8") as f:
             self.assertEqual(f.read(), "[]")
@@ -214,13 +217,16 @@ class TestBaseClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle.save_to_file()
 
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file([], 1)
+
         Rectangle.save_to_file([])
         with open("Rectangle.json", encoding="utf-8") as f:
             self.assertEqual(len(f.read()), 2)
 
         Rectangle.save_to_file(None)
         with open("Rectangle.json", encoding="utf-8") as f:
-            self.assertEqual(len(f.read()), 2)
+            self.assertEqual((f.read()), '[]')
 
         Rectangle.save_to_file([Rectangle(1, 2)])
         with open("Rectangle.json", encoding="utf-8") as f:
