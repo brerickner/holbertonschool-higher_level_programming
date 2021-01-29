@@ -224,8 +224,12 @@ class TestRectangleClass(unittest.TestCase):
         """output = sys.stdout
         r1 = Rectangle(3,2, 0, 0)
         """
-        """r1 = Rectangle(2, 3, 0, 0)
-        meow = "##\n##\n##\n"
+        r1 = Rectangle(2, 3, x=0, y=0)
+        outputStr = io.StringIO()
+        with contextlib.redirect_stdout(outputStr):
+            r1.display()
+        self.assertTrue("##\n##\n##\n" in outputStr.getvalue())
+        """
         self.assertEqual(r1.display(), meow)
         suite = unittest.TestLoader().loadTestsFromModule(__Rectangle__)
         with io.StringIO() as buf:
