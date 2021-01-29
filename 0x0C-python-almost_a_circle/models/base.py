@@ -81,7 +81,7 @@ class Base:
         instList = []
 
         if path.exists(filename) is False:
-            return instList
+            return []
         if path.exists(filename):
             with open(filename, "r", encoding="utf-8") as f:
                 fromFile = f.read()

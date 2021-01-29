@@ -2,6 +2,7 @@
 """Module with unittest methods for base.py"""
 
 import unittest
+import os
 import pep8
 import json
 from models.base import Base
@@ -108,17 +109,6 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(Base.to_json_string([]), '[]')
         self.assertEqual(Base.to_json_string(None), '[]')
 
-    """
-    def test_save_to_file(self):
-        *Method to test JSON string saved to file*
-        r1 = Rectangle(10, 7, 2, 8)
-        r2 = Rectangle(2, 4)
-        Rectangle.save_to_file([r1, r2])
-
-        with open("Rectangle.json", "r") as file:
-            self.assertListEqual(r.read())
-    """
-
     def test_create_method(self):
         """Method to test if classes dictionaries updated"""
         r1 = Rectangle(9, 9, 9, 9)
@@ -156,7 +146,42 @@ class TestBaseClass(unittest.TestCase):
         bens_test = Rectangle.create(**better_dictionary)
         self.assertEqual(str(bens_test), '[Rectangle] (4) 5/4 - 7/4')
 
-    """def test_load_file(self):
+    def test_load_file(self):
+        """Method to test file loads Rectangle and Square"""
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
+
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+
+        test = Rectangle.load_from_file()
+        self.assertEqual([], test)
+
+        test = Square.load_from_file()
+        self.assertEqual([], test)
+
+        r1 = Rectangle(6, 6, 6, 6)
+        r2 = Rectangle(3, 3)
+        passIn = [r1, r2]
+        Rectangle.save_to_file(passIn)
+        passOut = Rectangle.load_from_file()
+        self.assertNotEqual(id(passIn[0]), id(passOut[0]))
+        self.assertEqual(str(passIn[0]), str(passOut[0]))
+
+        s1 = Square(6, 6, 6, 6)
+        s2 = Square(3, 3)
+        passIn = [s1, s2]
+        Square.save_to_file(passIn)
+        passOut = Square.load_from_file()
+        self.assertNotEqual(id(passIn[0]), id(passOut[0]))
+        self.assertEqual(str(passIn[0]), str(passOut[0]))
+
+        """r1 = Rectangle(6, 6, 6, 6)
+        r2 = Rectangle(3, 3,)
+        passIn = [r2, r2]
+        Rectangle.save_to_file()"""
+
+        """def test_load_file(self):
         Module to test that Rectangles and Squares load from a file
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
@@ -164,16 +189,3 @@ class TestBaseClass(unittest.TestCase):
         testOut = Rectangle.load_from_file()
         self.assertEqual(str(testOut), str(test))
         """
-    def test_load_file(self):
-        """Method to test file loads Rectangle and Square"""
-
-        test = Rectangle.load_from_file()
-        self.assertNotEqual([], test)
-
-        test = Square.load_from_file()
-        self.assertNotEqual([], test)
-
-        """r1 = Rectangle(6, 6, 6, 6)
-        r2 = Rectangle(3, 3,)
-        passIn = [r2, r2]
-        Rectangle.save_to_file()"""
