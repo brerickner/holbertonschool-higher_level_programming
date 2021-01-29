@@ -355,3 +355,23 @@ class TestRectangleClass(unittest.TestCase):
         Rectangle.save_to_file(None)
         with open("Rectangle.json", encoding="utf-8") as f:
             self.assertEqual(f.read(), "[]")
+
+        Rectangle.save_to_file([Rectangle(1, 2)])
+        with open("Rectangle.json", encoding="utf-8") as f:
+            self.assertEqual(len(f.read()), 52)
+
+    """def test_load_file_raise(self):
+        *Method to test file load exception raises of Rectangle*
+        with self.assertRaises(TypeError):
+            Base.load_from_file(2, [])
+    """
+
+    """Method to test file loads Rectangle
+        def test_load_file(self):
+        test = Base.load_from_file()
+        self.assertEqual([], test)"""
+
+    """r1 = Rectangle(6, 6, 6, 6)
+        r2 = Rectangle(3, 3,)
+        passIn = [r2, r2]
+        Rectangle.save_to_file()"""

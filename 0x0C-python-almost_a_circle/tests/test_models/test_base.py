@@ -164,3 +164,16 @@ class TestBaseClass(unittest.TestCase):
         testOut = Rectangle.load_from_file()
         self.assertEqual(str(testOut), str(test))
         """
+    def test_load_file(self):
+        """Method to test file loads Rectangle and Square"""
+
+        test = Rectangle.load_from_file()
+        self.assertNotEqual([], test)
+
+        test = Square.load_from_file()
+        self.assertNotEqual([], test)
+
+        """r1 = Rectangle(6, 6, 6, 6)
+        r2 = Rectangle(3, 3,)
+        passIn = [r2, r2]
+        Rectangle.save_to_file()"""
