@@ -209,6 +209,10 @@ class TestBaseClass(unittest.TestCase):
         with open("Square.json", encoding="utf-8") as f:
             self.assertEqual(len(f.read()), 38)
 
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual("[]", f.read())
+
     def test_save_to_rect(self):
         """Method to test if files saved for rectangles"""
         if os.path.exists("Rectangle.json"):
@@ -225,8 +229,8 @@ class TestBaseClass(unittest.TestCase):
             self.assertEqual(len(f.read()), 2)
 
         Rectangle.save_to_file(None)
-        with open("Rectangle.json", encoding="utf-8") as f:
-            self.assertEqual((f.read()), '[]')
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual("[]", f.read())
 
         Rectangle.save_to_file([Rectangle(1, 2)])
         with open("Rectangle.json", encoding="utf-8") as f:
