@@ -203,6 +203,12 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, wdTypeErr):
             r1.update(y=1, width=None, x=1, id=-89, height=9)
 
+    def test_display_raise(self):
+        """Method to test display raises TypeError exception with 1 arg"""
+        r0 = Rectangle(2, 2, 2, 2, 2)
+        with self.assertRaises(TypeError):
+            r0.display(2)
+
     def test_display(self):
         """Method to test display output of square with # char"""
 
@@ -226,12 +232,13 @@ class TestRectangleClass(unittest.TestCase):
             with contextlib.redirect_stdout(buf):
                 unittest.TextTestRunner(stream=buf).run(suite)
         """
-        r1 = Rectangle(2, 3, 0, 0)
-        meow = "##\n##\n##\n"
+
+        r1 = Rectangle(2, 3, 1, 1)
+        meow = "\n ##\n ##\n ##\n"
         outputStr = io.StringIO()
         with contextlib.redirect_stdout(outputStr):
             r1.display()
-        self.assertTrue("##\n##\n##\n" in outputStr.getvalue())
+        self.assertTrue("\n ##\n ##\n ##\n" in outputStr.getvalue())
 
         r2 = Rectangle(3, 2)
         r2.display()
