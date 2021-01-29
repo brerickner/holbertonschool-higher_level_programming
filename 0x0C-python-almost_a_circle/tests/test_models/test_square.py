@@ -55,9 +55,6 @@ class TestSquareClass(unittest.TestCase):
         s1 = Square(10)
         self.assertEqual(str(s1), '[Square] (2) 0/0 - 10')
 
-    def test_display(self):
-        pass
-
     def test_square_attr_raises(self):
         """Method to raise exceptions for width/height"""
         wdValErr = "width must be > 0"
@@ -197,3 +194,21 @@ class TestSquareClass(unittest.TestCase):
         self.assertIs(type(r2_dict), dict)
         self.assertNotEqual(s1, s2)
         self.assertIsNot(s1, s2)
+
+    def test_to_save(self):
+        """Method to test if files saved for Square class"""
+
+        s1 = Square(2, 2, 2, 2)
+        s2 = Square(3, 3)
+        Square.save_to_file([s1, s2])
+
+        with open("Square.json", encoding="utf-8") as f:
+            self.assertEqual(len(f.read()), 76)
+
+        Square.save_to_file(None)
+        with open("Square.json", encoding="utf-8") as f:
+            self.assertEqual(len(f.read()), 2)
+
+        Square.save_to_file(None)
+        with open("Square.json", encoding="utf-8") as f:
+            self.assertEqual(f.read(), "[]")

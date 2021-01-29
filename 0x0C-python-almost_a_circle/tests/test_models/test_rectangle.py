@@ -337,3 +337,21 @@ class TestRectangleClass(unittest.TestCase):
         self.assertIs(type(r2_dict), dict)
         self.assertNotEqual(r1, r2)
         self.assertIsNot(r1, r2)
+
+    def test_to_save(self):
+        """Method to test if files saved for Rectangle class"""
+
+        r1 = Rectangle(2, 2, 2, 2, 2)
+        r2 = Rectangle(3, 3)
+        Rectangle.save_to_file([r1, r2])
+
+        with open("Rectangle.json", encoding="utf-8") as f:
+            self.assertEqual(len(f.read()), 104)
+
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", encoding="utf-8") as f:
+            self.assertEqual(len(f.read()), 2)
+
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", encoding="utf-8") as f:
+            self.assertEqual(f.read(), "[]")
