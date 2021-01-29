@@ -6,6 +6,9 @@ import pep8
 from models.rectangle import Rectangle
 from models.base import Base
 import re
+import sys
+import io
+import contextlib
 
 
 class TestRectangleClass(unittest.TestCase):
@@ -201,10 +204,7 @@ class TestRectangleClass(unittest.TestCase):
             r1.update(y=1, width=None, x=1, id=-89, height=9)
 
     def test_display(self):
-        pass
-    """
-    def test_display(self):
-        *Method to test complex display of square with # char*
+        """Method to test display output of square with # char"""
 
         r1 = Rectangle(2, 3, 0, 0)
         meow = "##\n##\n##\n"
@@ -214,7 +214,24 @@ class TestRectangleClass(unittest.TestCase):
         r1 = Rectangle(2, 3, 3, 0)
         meow = "   ##\n   ##\n   ##\n"
         assert re.match(r'^   ##\n   ##\n   ##\n$', meow)
+
+        """output = sys.stdout
+        r1 = Rectangle(3,2, 0, 0)
         """
+        """r1 = Rectangle(2, 3, 0, 0)
+        meow = "##\n##\n##\n"
+        self.assertEqual(r1.display(), meow)
+        suite = unittest.TestLoader().loadTestsFromModule(__Rectangle__)
+        with io.StringIO() as buf:
+            with contextlib.redirect_stdout(buf):
+                unittest.TextTestRunner(stream=buf).run(suite)
+        """
+        r1 = Rectangle(2, 3, 0, 0)
+        meow = "##\n##\n##\n"
+        outputStr = io.StringIO()
+        with contextlib.redirect_stdout(outputStr):
+            r1.display()
+        self.assertTrue("##\n##\n##\n" in outputStr.getvalue())
 
     def test_dict_repr(self):
         """Method to test dict repr of a Rectangle"""
