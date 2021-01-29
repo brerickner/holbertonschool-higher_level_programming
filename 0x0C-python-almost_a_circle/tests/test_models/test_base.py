@@ -189,3 +189,11 @@ class TestBaseClass(unittest.TestCase):
         testOut = Rectangle.load_from_file()
         self.assertEqual(str(testOut), str(test))
         """
+
+    def test_to_save_sq(self):
+        """Method to test files saved as squares"""
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
+
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file()
