@@ -3,7 +3,7 @@
 SELECT id, name
 FROM hbtn_0d_usa.cities
 WHERE state_id IN (
-SELECT id
+SELECT states.id
 FROM hbtn_0d_usa.states
 WHERE states.name = 'California')
 ORDER BY cities.id ASC;
