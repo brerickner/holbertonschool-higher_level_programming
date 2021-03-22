@@ -1,10 +1,9 @@
 #!/usr/bin/node
 
-let sentence;
-let first = 'C is fun\n';
-let second = 'Python is cool\n';
-let third = 'JavaScript is amazing';
+const first = 'C is fun\n';
+const second = 'Python is cool\n';
+const third = 'JavaScript is amazing';
 
-sentence = first + second + third;
+const sentence = first + second + third;
 
 console.log(sentence);
