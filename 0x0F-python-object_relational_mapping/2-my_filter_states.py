@@ -14,11 +14,10 @@ if __name__ == "__main__":
         db=sys.argv[3])
 
     cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY states.id ASC")
+    cur.execute("SELECT * FROM states WHERE name = '{}' ORDER BY states.id ASC".format(sys.argv[4]))
     rows = cur.fetchall()
     for row in rows:
-        if row[1] == sys.argv[4]:
-            print("{}".format(row))
+        print("{}".format(row))
     # Close all cursors
     cur.close()
     # Close all databases
