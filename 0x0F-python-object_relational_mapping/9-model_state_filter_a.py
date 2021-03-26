@@ -21,6 +21,6 @@ if __name__ == '__main__':
             State.name.contains('a')):
         try:
             print("{}: {}".format(instance.id, instance.name))
-        except BaseException:
+        except:
             print("Nothing")
     session.close()

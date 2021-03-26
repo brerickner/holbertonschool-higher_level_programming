@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-'''Module with script that lists all State objects
- from the database hbtn_0e_6_usa)'''
+'''script that prints the State object with the name passed
+as argument from the database hbtn_0e_6_usa'''
 
 from sys import argv
 from model_state import State, Base
@@ -16,11 +16,10 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for instance in session.query(State).order_by(
-            State.id).filter(
-            State.id == 1):
-        try:
-            print("{}: {}".format(instance.id, instance.name))
-        except:
-            print("Nothing")
+    stateMatch = session.query(State).order_by(
+        State.id).filter(State.name == argv[4])
+    try:
+        print("{}".format(stateMatch.id))
+    except BaseException:
+        print("Not Found")
     session.close()
