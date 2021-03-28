@@ -7,9 +7,8 @@ from model_state import Base, State
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
-vroom = 'mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1], argv[2], argv[3])
-
 if __name__ == '__main__':
+    vroom = 'mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1], argv[2], argv[3])
     engine = create_engine(vroom)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
@@ -17,8 +16,8 @@ if __name__ == '__main__':
 
     instance = session.query(State).order_by(State.id).first()
 
-    if instance is not None:
+    try:
         print("{}: {}".format(instance.id, instance.name))
-    else:
+    except:
         print("Nothing")
     session.close()
