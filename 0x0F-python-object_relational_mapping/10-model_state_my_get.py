@@ -19,8 +19,8 @@ if __name__ == '__main__':
 
     stateMatch = session.query(State).order_by(
         State.id).filter(State.name == argv[4]).first()
-    try:
+    if stateMatch:
         print("{}".format(stateMatch.id))
-    except:
+    else:
         print("Not Found")
     session.close()
