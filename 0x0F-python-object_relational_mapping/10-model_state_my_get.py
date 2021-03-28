@@ -3,7 +3,7 @@
 as argument from the database hbtn_0e_6_usa'''
 
 from sys import argv
-from model_state import State, Base
+from model_state import Base, State
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     session = Session()
 
     stateMatch = session.query(State).order_by(
-        State.id).filter(State.name == argv[4])
+        State.id).filter(State.name == argv[4]).first()
     try:
         print("{}".format(stateMatch.id))
     except:
