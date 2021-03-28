@@ -18,7 +18,7 @@ if __name__ == '__main__':
     session = Session()
 
     for stateMatch in session.query(State).\
-        filter(State.name == argv[4])
+        filter(State.name == argv[4]):
     try:
         print("{}".format(stateMatch.id))
     except:
