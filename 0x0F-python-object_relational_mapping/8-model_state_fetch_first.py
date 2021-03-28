@@ -4,20 +4,20 @@
 
 from sys import argv
 from model_state import Base, State
-from sqlalchemy import create_engine
+from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
 vroom = 'mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1], argv[2], argv[3])
 
 if __name__ == '__main__':
     engine = create_engine(vroom)
-
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
 
     instance = session.query(State).order_by(State.id).first()
 
-    if instance:
+    if instance is not None:
         print("{}: {}".format(instance.id, instance.name))
     else:
         print("Nothing")
