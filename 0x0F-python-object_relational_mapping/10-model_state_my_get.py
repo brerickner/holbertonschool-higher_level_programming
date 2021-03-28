@@ -17,7 +17,8 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    stateMatch = session.query(State).filter_by(name=argv[4]).first()
+    for stateMatch in session.query(State).\
+        filter(State.name == argv[4])
     try:
         print("{}".format(stateMatch.id))
     except:
