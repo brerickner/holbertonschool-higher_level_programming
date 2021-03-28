@@ -17,7 +17,7 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    stateMatch = session.query(State).filter(State.name == argv[4])
+    stateMatch = session.query(State).filter(State.name == argv[4]).first()
     try:
         print(stateMatch.id)
     except:
