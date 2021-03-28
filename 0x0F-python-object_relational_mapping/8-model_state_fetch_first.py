@@ -3,7 +3,7 @@
  from the database hbtn_0e_6_usa)'''
 
 from sys import argv
-from model_state import State, Base
+from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -16,10 +16,10 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    instance = session.query(State).order_by(
-            State.id).first()
-    try:
+    instance = session.query(State).order_by(State.id).first()
+
+    if instance:
         print("{}: {}".format(instance.id, instance.name))
-    except:
+    else:
         print("Nothing")
     session.close()
