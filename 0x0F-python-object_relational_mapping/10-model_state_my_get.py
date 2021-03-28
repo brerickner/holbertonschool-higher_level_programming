@@ -7,9 +7,9 @@ from model_state import State, Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-vroom = 'mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1], argv[2], argv[3])
 
 if __name__ == '__main__':
+    vroom = 'mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1], argv[2], argv[3])
     engine = create_engine(vroom)
     Base.metadata.create_all(engine)
 
