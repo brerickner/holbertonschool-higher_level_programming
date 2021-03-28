@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''script that prints the State object with the name passed
+'''Module with script that prints the State object with the name passed
 as argument from the database hbtn_0e_6_usa'''
 
 from sys import argv
@@ -17,9 +17,9 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    stateMatch = session.query(State).filter(State.name == argv[4]).first()
-    if stateMatch:
-        print(stateMatch.id)
-    else:
+    stateMatch = session.query(State).filter_by(name=argv[4]).first()
+    try:
+        print("{}".format(stateMatch.id))
+    except:
         print("Not Found")
     session.close()
