@@ -17,10 +17,9 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    stateMatch = session.query(State).order_by(
-        State.id).filter(State.name == argv[4]).first()
-    if stateMatch:
+    stateMatch = session.query(State).filter(State.name == argv[4]).first()
+    try:
         print("{}".format(stateMatch.id))
-    else:
+    except:
         print("Not Found")
     session.close()
