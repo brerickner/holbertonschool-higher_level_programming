@@ -16,11 +16,10 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for instance in session.query(State).order_by(
-            State.id).filter(
-            State.id == 1):
-        try:
-            print("{}: {}".format(instance.id, instance.name))
-        except:
-            print("Nothing")
+    instance = session.query(State).order_by(
+            State.id).first()
+    try:
+        print("{}: {}".format(instance.id, instance.name))
+    except:
+        print("Nothing")
     session.close()
