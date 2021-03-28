@@ -9,7 +9,8 @@ from sqlalchemy.orm import sessionmaker
 
 
 if __name__ == '__main__':
-    vroom = 'mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1], argv[2], argv[3])
+    vroom = 'mysql+mysqldb://{}:{}@localhost/{}'\
+        .format(argv[1], argv[2], argv[3])
     engine = create_engine(vroom)
     Base.metadata.create_all(engine)
 
@@ -19,7 +20,7 @@ if __name__ == '__main__':
     stateMatch = session.query(State).order_by(
         State.id).filter(State.name == argv[4])
     try:
-        print(stateMatch.id)
+        print("{}".format(stateMatch.id))
     except:
         print("Not Found")
     session.close()
