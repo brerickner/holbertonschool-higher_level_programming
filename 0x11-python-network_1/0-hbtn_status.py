@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 '''Python script that fetches https://intranet.hbtn.io/status'''
 import urllib.request
-import urllib.parse
 
 if __name__ == "__main__":
     url = 'https://intranet.hbtn.io/status'
@@ -10,6 +9,6 @@ if __name__ == "__main__":
         html = response.read()
 
         print("Body response:")
-        print("    - type: {}".format(type(html)))
-        print("    - content: {}".format(html))
-        print("    - utf8 content: {}".format(html.decode(encoding='UTF-8')))
+        print("\t- type: {}".format(type(html)))
+        print("\t- content: {}".format(html))
+        print("\t- utf8 content: {}".format(html.decode(encoding='UTF-8')))
