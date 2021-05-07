@@ -10,7 +10,7 @@ request(url, (error, response, body) => {
   let meow = 0;
   for (let i = 0; i < FilmResults.length; i++) {
     for (let j = 0; j < FilmResults[i].characters.length; j++) {
-      if (FilmResults[i].characters[j] === 'https://swapi-api.hbtn.io/api/people/18/') {
+      if (FilmResults[i].characters[j].includes('/18/')) {
         meow += 1;
       }
     }
